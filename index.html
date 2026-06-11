@@ -51,7 +51,7 @@
         --text-nav-link: var(--dark);
       }
 
-      /* متغيرات الألوان عند ال��حول للوضع المظلم */
+      /* متغيرات الألوان عند التحول للوضع المظلم */
       body.dark-theme {
         --body-bg: var(--dark);
         --body-text: #f8fafc;
@@ -380,7 +380,7 @@
             >
               <div class="position-relative">
                 <div
-                  class="profile-placeholder bg-gradient-to-br bg-primary-custom rounded-circle d-flex align-items-center justify-content-center text-white shadow-2xl animate-glow border border-4"
+                  class="profile-placeholder bg-gradient-to-br bg-primary-custom rounded-circle d-flex align-items-center justify-content-center text-white shadow-2xl animate-glow border border-4 border-white"
                   style="width: 280px; height: 280px; font-size: 5rem"
                 >
                   <img
@@ -765,10 +765,11 @@
                 >
                   <div>
                     <h3 class="h4 fw-bold text-primary-custom mb-2">
-                      مدونة مقالات ديناميكية
+                مدونة مقالات 
                     </h3>
                     <p class="text-muted card-text">
-                      منصة مدونة حديثة وتفاعلية توفر تجربة قراءة سلسة. تتميز بعرض مقالات مصغرة مع معاينة مبدئية، وميزة "قراءة المزيد" المدمجة. الواجهة مستجيبة وسهلة الاستخدام مع تصميم أنيق ويدعم الفلترة والبحث السريع عن المقالات.
+                      تصميم واجهة مدونة تفاعلية تعرض مقالات مصغرة، مع ميزة
+                      "قراءة المزيد" باستخدام JavaScript.
                     </p>
                     <div class="d-flex flex-wrap gap-2 mb-4">
                       <span
@@ -818,7 +819,8 @@
                       معرض منتجات تفاعلي
                     </h3>
                     <p class="text-muted card-text">
-                      متجر رقمي حديث يعرض المنتجات بطريقة شبكية متجاوبة وجميلة. يشمل نظام سلة مشتريات ذكي يحسب الكمية والإجمالي تلقائياً. واجهة سلسة مع إمكانية البحث والفلترة حسب الفئات، مع تأثيرات بصرية ناعمة تحسن من تجربة المستخدم.
+                      شبكة منتجات متجاوبة باستخدام Bootstrap Cards، تحتوي على
+                      سلة مشتريات تفاعلية تحسب عدد العناصر المضافة.
                     </p>
                     <div class="d-flex flex-wrap gap-2 mb-4">
                       <span
@@ -865,10 +867,11 @@
                 >
                   <div>
                     <h3 class="h4 fw-bold text-primary-custom mb-2">
-                      آلة حاسبة ذكية
+                      آلة حاسبة 
                     </h3>
                     <p class="text-muted card-text">
-                      تطبيق آلة حاسبة حديثة بتصميم عصري وواجهة بديهية تدعم جميع العمليات الحسابية الأساسية والمتقدمة. برمجة متقنة باستخدام JavaScript DOM يوفر تجربة سريعة وسلسة. تصميم مستجيب يعمل بشكل مثالي على جميع الأجهزة والشاشات.
+                      تطبيق آلة حاسبة للويب بتصميم عصري للعمليات الرياضية
+                      الأساسية، معالجة بالكامل باستخدام JavaScript.
                     </p>
                     <div class="d-flex flex-wrap gap-2 mb-4">
                       <span
@@ -911,10 +914,11 @@
                 >
                   <div>
                     <h3 class="h4 fw-bold text-primary-custom mb-2">
-                      نموذج استشارة متقدم
+                      نموذج استشارة متجاوب
                     </h3>
                     <p class="text-muted card-text">
-                      نموذج احترافي لجمع بيانات العملاء مع نظام تحقق ذكي وشامل يمنع إرسال البيانات الخاطئة. يتضمن رسائل خطأ واضحة وفوري لكل حقل، مع تأثيرات بصرية جميلة. التطبيق يوفر تجربة مستخدم سلسة وموثوقة مع حماية عالية للبيانات.
+                      نموذج إدخال بيانات مع نظام تحقق (Validation) ذكي باستخدام
+                      JavaScript لمنع إرسال الحقول الفارغة.
                     </p>
                     <div class="d-flex flex-wrap gap-2 mb-4">
                       <span
@@ -961,10 +965,11 @@
                 >
                   <div>
                     <h3 class="h4 fw-bold text-primary-custom mb-2">
-                      منصة تجارة إلكترونية شاملة
+                      منصة تجارة إلكترونية
                     </h3>
                     <p class="text-muted card-text">
-                      نظام متجر رقمي متكامل مبني بتقنيات Laravel و PHP المتقدمة. يوفر إدارة شاملة للمنتجات، نظام عربات تسوق ذكي، معالجة آمنة للدفع، وإدارة المستخدمين. المنصة تتضمن لوحة تحكم احترافية للمتجر وتقارير مفصلة عن المبيعات.
+                      تصميم وتنفيذ متجر رقمي شامل باستخدام Laravel وPHP، يتضمن
+                      إدارة المنتجات وميزات تسوق المستخدمين.
                     </p>
                     <div class="d-flex flex-wrap gap-2 mb-4">
                       <span
@@ -990,21 +995,362 @@
                 </div>
               </div>
             </div>
+
+            <div class="col-md-6 col-lg-5">
+              <div
+                class="card h-100 shadow-sm rounded-4 overflow-hidden hover-lift"
+              >
+                <div
+                  class="position-relative bg-purple text-white d-flex align-items-center justify-content-center fs-1"
+                  style="height: 220px; background-color: #a855f7"
+                >
+                  <i class="fas fa-utensils"></i>
+                  <span
+                    class="position-absolute bg-white text-dark top-0 end-0 m-3 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                    >Full-Stack</span
+                  >
+                </div>
+                <div
+                  class="card-body p-4 d-flex flex-column justify-content-between"
+                >
+                  <div>
+                    <h3 class="h4 fw-bold text-primary-custom mb-2">
+                      نظام إدارة مطعم
+                    </h3>
+                    <p class="text-muted card-text">
+                      تطوير منصة مؤتمتة لتصفح القائمة ومعالجة الطلبات الرقمية
+                      باستخدام MySQL لحفظ البيانات.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                      <span
+                        class="badge bg-success-subtle text-success border px-2 py-1 rounded-pill"
+                        >MySQL</span
+                      >
+                      <span
+                        class="badge bg-warning-subtle text-warning border px-2 py-1 rounded-pill"
+                        >JavaScript</span
+                      >
+                    </div>
+                  </div>
+                  <button
+                    onclick="openImageGallery('project2')"
+                    class="btn btn-purple w-100 py-3 rounded-xl-custom fw-bold text-white border-0"
+                    style="background-color: #a855f7"
+                  >
+                    <i class="fas fa-code me-2"></i> عرض التفاصيل
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- التعليم والتدريب -->
+      <section id="education" class="education py-5 bg-light">
+        <div class="container my-5">
+          <h2 class="display-5 fw-bold text-center text-primary-custom mb-5">
+            التعليم والتدريب
+          </h2>
+          <div class="row g-4 justify-content-center">
+            <div class="col-md-6 col-lg-5">
+              <div class="card h-100 rounded-4 p-4 hover-lift">
+                <div class="d-flex gap-4">
+                  <div
+                    class="d-flex align-items-center justify-content-center bg-secondary-custom text-white rounded-circle flex-shrink-0 shadow"
+                    style="width: 56px; height: 56px"
+                  >
+                    <i class="fas fa-university fs-4"></i>
+                  </div>
+                  <div>
+                    <h3 class="h5 fw-bold text-dark mb-1">
+                      بكالوريوس في تكنولوجيا المعلومات
+                    </h3>
+                    <h4 class="h6 text-secondary-custom mb-3">
+                      جامعة الاتحاد الخاصة – دمشق
+                    </h4>
+                    <p class="text-muted small mb-3">تخصص هندسة معلوماتية</p>
+                    <div class="d-flex flex-column gap-2">
+                      <span
+                        class="badge bg-primary px-3 py-2 w-fit rounded-pill"
+                        >2023 - حتى الآن</span
+                      >
+                      <span
+                        class="badge bg-success px-3 py-2 w-fit rounded-pill"
+                        >السنة الرابعة</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-5">
+              <div class="card h-100 rounded-4 p-4 hover-lift">
+                <div class="d-flex gap-4">
+                  <div
+                    class="d-flex align-items-center justify-content-center bg-info text-white rounded-circle flex-shrink-0 shadow"
+                    style="width: 56px; height: 56px"
+                  >
+                    <i class="fab fa-react fs-4"></i>
+                  </div>
+                  <div>
+                    <h3 class="h5 fw-bold text-dark mb-1">
+                      دورة تطوير واجهات المستخدم (React.js)
+                    </h3>
+                    <h4 class="h6 text-info mb-3">
+                      الجمعية السورية للمعلوماتية
+                    </h4>
+                    <p class="text-muted small mb-3">Frontend Development</p>
+                    <span class="badge bg-primary px-3 py-2 w-fit rounded-pill"
+                      >أدرسها حالياً</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-5">
+              <div class="card h-100 rounded-4 p-4 hover-lift">
+                <div class="d-flex gap-4">
+                  <div
+                    class="d-flex align-items-center justify-content-center text-white rounded-circle flex-shrink-0 shadow"
+                    style="width: 56px; height: 56px; background-color: #a855f7"
+                  >
+                    <i class="fas fa-laptop-code fs-4"></i>
+                  </div>
+                  <div>
+                    <h3 class="h5 fw-bold text-dark mb-1">
+                      دورة تطوير الويب المتكامل
+                    </h3>
+                    <h4 class="h6 text-purple mb-3" style="color: #a855f7">
+                      مركز أسس للتدريب وتنمية الموارد البشرية
+                    </h4>
+                    <p class="text-muted small mb-3">
+                      Frontend & Backend Development
+                    </p>
+                    <span class="badge bg-success px-3 py-2 w-fit rounded-pill"
+                      >مكتملة</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-5">
+              <div class="card h-100 rounded-4 p-4 hover-lift">
+                <div class="d-flex gap-4">
+                  <div
+                    class="d-flex align-items-center justify-content-center bg-danger text-white rounded-circle flex-shrink-0 shadow"
+                    style="width: 56px; height: 56px"
+                  >
+                    <i class="fas fa-school fs-4"></i>
+                  </div>
+                  <div>
+                    <h3 class="h5 fw-bold text-dark mb-1">
+                      شهادة الدراسة الثانوية
+                    </h3>
+                    <h4 class="h6 text-danger mb-3">ثانوية السعادة – دمشق</h4>
+                    <p class="text-muted small mb-3">الفرع العلمي</p>
+                    <span class="badge bg-success px-3 py-2 w-fit rounded-pill"
+                      >متخرج عام 2023</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- المهارات الشخصية -->
+      <section id="personal" class="personal-skills py-5 bg-white">
+        <div class="container my-5">
+          <h2 class="display-5 fw-bold text-center text-primary-custom mb-5">
+            المهارات الشخصية واللغات
+          </h2>
+          <div class="row g-4 justify-content-center">
+            <div class="col-md-6 col-lg-5">
+              <div class="card h-100 rounded-4 p-4">
+                <h3
+                  class="h4 fw-bold text-primary mb-4 d-flex align-items-center gap-2"
+                >
+                  <i class="fas fa-brain text-purple" style="color: #a855f7"></i
+                  >المهارات الشخصية
+                </h3>
+                <div class="d-flex flex-column gap-3">
+                  <div
+                    class="p-3 bg-light rounded-xl-custom d-flex align-items-center gap-3"
+                  >
+                    <i class="fas fa-puzzle-piece text-primary fs-5"></i>
+                    <span class="fw-medium"
+                      >التفكير التحليلي وحل المشكلات البرمجية</span
+                    >
+                  </div>
+                  <div
+                    class="p-3 bg-light rounded-xl-custom d-flex align-items-center gap-3"
+                  >
+                    <i class="fas fa-users text-success fs-5"></i>
+                    <span class="fw-medium"
+                      >العمل الجماعي والقدرة على القيادة</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-5">
+              <div class="card h-100 rounded-4 p-4">
+                <h3
+                  class="h4 fw-bold text-primary mb-4 d-flex align-items-center gap-2"
+                >
+                  <i class="fas fa-language text-danger"></i> اللغات
+                </h3>
+                <div class="d-flex flex-column gap-4">
+                  <div>
+                    <div
+                      class="d-flex justify-content-between align-items-center mb-2"
+                    >
+                      <span class="fw-bold">العربية</span>
+                      <span
+                        class="badge bg-success-subtle text-success border px-2 py-1 rounded-pill"
+                        >اللغة الأم</span
+                      >
+                    </div>
+                    <div class="progress" style="height: 8px">
+                      <div
+                        class="progress-bar bg-success"
+                        style="width: 100%"
+                      ></div>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      class="d-flex justify-content-between align-items-center mb-2"
+                    >
+                      <span class="fw-bold">الإنجليزية</span>
+                      <span
+                        class="badge bg-primary-subtle text-primary border px-2 py-1 rounded-pill"
+                        >مستوى جيد</span
+                      >
+                    </div>
+                    <div class="progress" style="height: 8px">
+                      <div
+                        class="progress-bar bg-primary"
+                        style="width: 75%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- التواصل -->
+      <section id="contact" class="contact py-5 bg-light">
+        <div class="container my-5">
+          <h2 class="display-5 fw-bold text-center text-primary-custom mb-5">
+            تواصل معي
+          </h2>
+          <div class="row g-4 justify-content-center">
+            <div class="col-md-5 d-flex flex-column gap-3">
+              <div class="card p-4 rounded-4 hover-lift">
+                <div class="d-flex align-items-center gap-3">
+                  <div
+                    class="d-flex align-items-center justify-content-center bg-secondary-custom text-white rounded-circle shadow"
+                    style="width: 48px; height: 48px"
+                  >
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div>
+                    <h4 class="h6 fw-bold m-0">الموقع</h4>
+                    <p class="text-muted m-0">سوريا، دمشق</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card p-4 rounded-4 hover-lift">
+                <div class="d-flex align-items-center gap-3">
+                  <div
+                    class="d-flex align-items-center justify-content-center bg-danger text-white rounded-circle shadow"
+                    style="width: 48px; height: 48px"
+                  >
+                    <i class="fas fa-phone"></i>
+                  </div>
+                  <div>
+                    <h4 class="h6 fw-bold m-0">الهاتف</h4>
+                    <p class="text-muted m-0" dir="ltr">+963 996 569 526</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-5">
+              <div
+                class="card p-4 rounded-4 h-100 d-flex flex-column justify-content-between"
+              >
+                <div>
+                  <h3 class="h4 fw-bold mb-4">
+                    <i class="fas fa-share-alt text-success me-2"></i> تابعني
+                    على
+                  </h3>
+                  <div class="d-flex gap-3 mb-4">
+                    <a
+                      href="https://www.linkedin.com/in/abdalrhman-almustafa-84839438b"
+                      class="btn btn-primary d-flex align-items-center justify-content-center rounded-3 text-white"
+                      style="
+                        width: 56px;
+                        height: 56px;
+                        background-color: #0a66c2;
+                        border: 0;
+                      "
+                      ><i class="fab fa-linkedin fs-4"></i
+                    ></a>
+                    <a
+                      href="https://github.com/DarkZero81"
+                      class="btn btn-dark d-flex align-items-center justify-content-center rounded-3 text-white"
+                      style="
+                        width: 56px;
+                        height: 56px;
+                        background-color: #1f2937;
+                        border: 0;
+                      "
+                      ><i class="fab fa-github fs-4"></i
+                    ></a>
+                  </div>
+                </div>
+                <div
+                  class="p-3 bg-light rounded-3 border-start border-primary border-4"
+                >
+                  <p class="text-muted m-0">
+                    <i class="fas fa-quote-left text-primary me-2"></i> أسعد
+                    دائماً للتواصل معكم ومناقشة الفرص المهنية الجديدة.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Footer of portfolio -->
-    <footer class="bg-light py-5 text-center border-top">
-      <div class="container">
-        <p class="text-muted mb-0">
-          © 2024 عبد الرحمن المصطفى. جميع الحقوق محفوظة.
+    <footer
+      class="bg-dark text-white py-5 text-center position-relative overflow-hidden"
+    >
+      <div class="container position-relative z-1">
+        <h3 class="display-6 fw-bold mb-3 text-white">عبد الرحمن المصطفى</h3>
+        <p class="text-secondary fs-5 mb-4">
+          مطور ويب Full-Stack متخصص في PHP & Laravel
+        </p>
+        <hr class="border-secondary opacity-25 my-4" />
+        <p class="m-0 text-secondary">
+          &copy; 2026 عبد الرحمن المصطفى. جميع الحقوق محفوظة.
         </p>
       </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="public/main.js"></script>
+    <script src="public/shared.js"></script>
   </body>
 </html>
