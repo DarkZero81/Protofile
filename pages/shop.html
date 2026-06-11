@@ -19,6 +19,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
     />
     <link rel="stylesheet" href="../public/shared.css" />
+    <!-- The shop page shares the same theme styles, but also adds product styling and cart visuals. -->
 
     <style>
       /* الألوان والمتغيرات من التصميم الجديد */
@@ -158,7 +159,7 @@
     </style>
   </head>
   <body>
-    <!-- شريط التنقل المتطور -->
+    <!-- Shop page navigation bar. The cart button and theme toggle keep this page in sync with the rest of the site. -->
     <nav
       class="navbar navbar-expand-lg navbar-dark navbar-custom backdrop-blur sticky-top shadow-sm py-3"
     >
@@ -288,7 +289,7 @@
     </footer>
 
     <script>
-      // بيانات الوجبات
+      // Product data for the shop page. Each item is rendered dynamically to keep the code easy to maintain.
       const meals = [
         {
           id: 1,
