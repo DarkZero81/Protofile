@@ -307,46 +307,63 @@
   </head>
 
   <body>
-    <header class="sticky-top navbar-custom">
+    <header class="sticky-top">
       <nav
-        class="navbar navbar-expand-lg navbar-dark navbar-custom backdrop-blur sticky-top shadow-sm py-3"
+        class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm py-3"
+        id="mainNavbar"
       >
         <div class="container">
-          <a class="navbar-brand text-gradient fw-bold fs-3 m-0" href="#"
-            >مدونة حسوب</a
+          <a
+            class="navbar-brand fw-bold fs-4 text-gradient"
+            href="../index.html"
           >
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
-            <li class="nav-item">
-              <a class="nav-link custom-link" href="../index.html"
-                >السيرة الذاتية</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link custom-link" href="./blog.html">المدونة</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link custom-link active" href="./shop.html"
-                >المتجر</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link custom-link" href="./calculator.html"
-                >الحاسبة</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link custom-link" href="./contact.html">اتصل بنا</a>
-            </li>
-          </ul>
-          <div class="d-flex align-items-center gap-2 order-lg-last">
+            مدونة حسوب</a
+          >
+          <button
+            class="navbar-toggler border-0"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
+              <li class="nav-item">
+                <a class="nav-link custom-link" href="../index.html"
+                  >السيرة الذاتية</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link custom-link" href="blog.html">المدونة</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link custom-link" href="shop.html">المتجر</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link custom-link" href="calculator.html"
+                  >الحاسبة</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link custom-link active"
+                  href="https://giftshop-y10y.onrender.com/"
+                  >متجر الهدايا</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link custom-link active" href="contact.html"
+                  >اتصل بنا</a
+                >
+              </li>
+            </ul>
+
             <button
               id="theme-toggle"
-              class="btn btn-theme-toggle d-flex align-items-center gap-2 rounded-xl-custom py-2 px-3"
+              class="btn btn-theme-toggle ms-lg-4 d-flex align-items-center gap-2 py-2 px-3"
             >
               <span id="toggle-icon">🌙</span>
-              <span id="toggle-text" class="d-none d-sm-inline"
-                >الوضع الليلي</span
-              >
             </button>
           </div>
         </div>
