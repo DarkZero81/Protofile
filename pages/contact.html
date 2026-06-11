@@ -181,6 +181,27 @@
       .form-check {
         text-align: right;
       }
+
+      /* رسالة التنبيه */
+      .alert-empty-form {
+        display: none;
+        animation: slideInDown 0.4s ease;
+      }
+
+      .alert-empty-form.show {
+        display: block;
+      }
+
+      @keyframes slideInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
     </style>
   </head>
 
@@ -256,6 +277,22 @@
             class="card shadow-lg border-0 rounded-4 custom-card transition-all my-4"
           >
             <div class="card-body p-4 p-md-5">
+              <!-- رسالة التنبيه -->
+              <div
+                class="alert alert-warning alert-empty-form alert-dismissible fade"
+                id="emptyFormAlert"
+                role="alert"
+              >
+                <i class="fa-solid fa-circle-exclamation me-2"></i>
+                <strong>تنبيه!</strong> يرجى ملء الحقول المطلوبة على الأقل قبل الإرسال
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="alert"
+                  aria-label="إغلاق"
+                ></button>
+              </div>
+
               <form id="consultationForm" novalidate>
                 <div class="mb-4 text-end">
                   <label for="name" class="form-label fw-semibold mb-2">
@@ -526,6 +563,8 @@
       document.addEventListener("DOMContentLoaded", function () {
         // ======= Validation: منع الإرسال إذا كانت الحقول المطلوبة فارغة =======
         const form = document.getElementById("consultationForm");
+        const emptyFormAlert = document.getElementById("emptyFormAlert");
+
         if (form) {
           form.addEventListener("submit", function (e) {
             const requiredSelectors = [
@@ -537,6 +576,7 @@
             let firstInvalid = null;
             let formValid = true;
 
+            // التحقق من ملئ جميع الحقول
             requiredSelectors.forEach((sel) => {
               const el = form.querySelector(sel);
               if (!el) return;
@@ -564,9 +604,21 @@
             if (!formValid) {
               e.preventDefault();
               e.stopPropagation();
+
+              // عرض رسالة التنبيه
+              emptyFormAlert.classList.add("show");
+
               if (firstInvalid && typeof firstInvalid.focus === "function") {
                 firstInvalid.focus();
               }
+
+              // إخفاء الرسالة بعد 5 ثواني
+              setTimeout(() => {
+                emptyFormAlert.classList.remove("show");
+              }, 5000);
+            } else {
+              // إخفاء الرسالة عند النجاح
+              emptyFormAlert.classList.remove("show");
             }
           });
 
