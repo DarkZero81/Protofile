@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Contact Us</title>
+
+    <link rel="preconnect" href="https://googleapis.com" />
+    <link rel="preconnect" href="https://gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <!-- Bootstrap Links -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+    />
+    <link rel="stylesheet" href="../public/shared.css" />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+
+    <style>
+      /* الانتقال السلس الشامل بين الأوضاع */
+      body {
+        transition:
+          background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          color 0.4s ease;
+        font-family: "Cairo", "Kufam", sans-serif;
+      }
+
+      /* 🌙 الوضع المظلم المطور */
+      body.dark-theme {
+        background-color: #2d3748 !important;
+        color: #f8fafc;
+      }
+      body.dark-theme .navbar-custom {
+        background-color: rgba(30, 41, 59, 0.95) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      body.dark-theme .navbar-custom .nav-link {
+        color: #cbd5e1 !important;
+      }
+      body.dark-theme .navbar-custom .nav-link.active,
+      body.dark-theme .navbar-custom .nav-link:hover {
+        color: #00d2ff !important;
+      }
+      body.light-theme .navbar-custom {
+        background-color: rgba(255, 255, 255, 0.95) !important;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      }
+      body.light-theme .navbar-custom .nav-link {
+        color: #475569 !important;
+      }
+      body.light-theme .navbar-custom .nav-link.active,
+      body.light-theme .navbar-custom .nav-link:hover {
+        color: #0d6efd !important;
+      }
+
+      body.dark-theme .custom-card {
+        background: rgba(30, 41, 59, 0.75) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        color: #f8fafc;
+      }
+
+      body.dark-theme .custom-input {
+        background-color: rgba(15, 23, 42, 0.6) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: #fff !important;
+      }
+
+      body.dark-theme .custom-input:focus {
+        border-color: #00d2ff !important;
+        box-shadow: 0 0 0 0.25rem rgba(0, 210, 255, 0.25) !important;
+      }
+
+      body.dark-theme .custom-input::placeholder {
+        color: rgba(255, 255, 255, 0.4) !important;
+      }
+
+      /* ☀️ الوضع المضيء المطور */
+      body.light-theme {
+        background-color: #f1f5f9 !important;
+        color: #1e293b;
+      }
+      body.light-theme .navbar-custom {
+        background-color: rgba(255, 255, 255, 0.95) !important;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      }
+      body.light-theme .nav-link {
+        color: #475569 !important;
+      }
+      body.light-theme .nav-link.active,
+      body.light-theme .nav-link:hover {
+        color: #0d6efd !important;
+      }
+
+      body.light-theme .custom-card {
+        background: rgba(255, 255, 255, 0.85) !important;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(15, 23, 42, 0.08) !important;
+        color: #1e293b;
+      }
+
+      body.light-theme .custom-input {
+        background-color: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        color: #0f172a !important;
+      }
+
+      body.light-theme .custom-input:focus {
+        border-color: #0d6efd !important;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15) !important;
+      }
+
+      body.light-theme .custom-input::placeholder {
+        color: #94a3b8 !important;
+      }
+
+      /* تأثيرات عامة */
+
+      .btn-submit-custom {
+        background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+        color: white;
+        font-weight: 700;
+        border-radius: 12px;
+        padding: 14px;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .btn-submit-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(255, 75, 43, 0.35);
+        color: white;
+      }
+
+      .text-gradient {
+        background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+      }
+
+      .form-label i {
+        color: #00d2ff;
+        transition: color 0.3s ease;
+      }
+      .form-label {
+        display: block;
+        text-align: right;
+        width: 100%;
+      }
+      body.light-theme .form-label i {
+        color: #0d6efd;
+      }
+
+      .custom-card {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+      }
+      .transition-all {
+        transition: all 0.3s ease;
+      }
+
+      .form-check {
+        text-align: right;
+      }
+    </style>
+  </head>
+
+  <body class="dark-theme">
+    <header class="sticky-top">
+      <nav
+        class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm py-3"
+        id="mainNavbar"
+      >
+        <div class="container">
+          <a
+            class="navbar-brand fw-bold fs-4 text-gradient"
+            href="../index.html"
+          >
+            تسجيل أو استشارة</a
+          >
+          <button
+            class="navbar-toggler border-0"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
+              <li class="nav-item">
+                <a class="nav-link custom-link" href="../index.html"
+                  >السيرة الذاتية</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link custom-link" href="blog.html">المدونة</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link custom-link" href="shop.html">المتجر</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link custom-link" href="calculator.html"
+                  >الحاسبة</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link custom-link active" href="contact.html"
+                  >اتصل بنا</a
+                >
+              </li>
+            </ul>
+
+            <button
+              id="theme-toggle"
+              class="btn btn-theme-toggle ms-lg-4 d-flex align-items-center gap-2 py-2 px-3"
+            >
+              <span id="toggle-icon">🌙</span>
+              <span id="toggle-text">الوضع الليلي</span>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container my-5 text-end">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+          <div
+            class="card shadow-lg border-0 rounded-4 custom-card transition-all my-4"
+          >
+            <div class="card-body p-4 p-md-5">
+              <form id="consultationForm" novalidate>
+                <div class="mb-4 text-end">
+                  <label for="name" class="form-label fw-semibold mb-2">
+                    <i class="bi bi-person ms-1"></i> الاسم الكامل
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg custom-input text-start"
+                    id="name"
+                    name="name"
+                    placeholder="أدخل اسمك الكامل"
+                    required
+                  />
+                  <div class="invalid-feedback pe-2">
+                    يرجى إدخال الاسم الكامل
+                  </div>
+                </div>
+                <!-- Email -->
+                <div class="mb-4 text-end">
+                  <label for="email" class="form-label fw-semibold mb-2">
+                    <i class="bi bi-envelope ms-1"></i> البريد الإلكتروني
+                  </label>
+                  <input
+                    type="email"
+                    class="form-control form-control-lg custom-input text-start"
+                    dir="ltr"
+                    id="email"
+                    name="email"
+                    placeholder="example@email.com"
+                    required
+                  />
+                  <div class="invalid-feedback pe-2">
+                    يرجى إدخال بريد إلكتروني صحيح
+                  </div>
+                </div>
+                <!-- Phone  -->
+                <div class="mb-4 text-end">
+                  <label for="phone" class="form-label fw-semibold mb-2">
+                    <i class="bi bi-telephone ms-1"></i> رقم الهاتف
+                  </label>
+                  <input
+                    type="tel"
+                    class="form-control form-control-lg custom-input text-start"
+                    id="phone"
+                    name="phone"
+                    placeholder="أدخل رقم هاتفك"
+                    dir="ltr"
+                  />
+                </div>
+                <!-- Choose Type -->
+                <div class="mb-4 text-end">
+                  <label for="inquiryType" class="form-label fw-semibold mb-2">
+                    <i class="bi bi-tag ms-1"></i> نوع الاستفسار
+                  </label>
+                  <select
+                    class="form-control form-control-lg custom-input text-start"
+                    id="inquiryType"
+                    name="inquiryType"
+                  >
+                    <option value="" disabled selected>
+                      اختر نوع الاستفسار
+                    </option>
+                    <option value="general">استفسار عام</option>
+                    <option value="support">دعم فني</option>
+                    <option value="sales">مبيعات</option>
+                    <option value="partnership">شراكة</option>
+                    <option value="other">أخرى</option>
+                  </select>
+                </div>
+                <!--Subject -->
+                <div class="mb-4 text-end">
+                  <label for="subject" class="form-label fw-semibold mb-2">
+                    <i class="bi bi-bookmark ms-1"></i> الموضوع
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg custom-input text-start"
+                    id="subject"
+                    name="subject"
+                    placeholder="موضوع الرسالة"
+                    required
+                  />
+                  <div class="invalid-feedback pe-2">
+                    يرجى إدخال موضوع الرسالة
+                  </div>
+                </div>
+                <!-- City -->
+                <div class="mb-4 text-end">
+                  <label for="city" class="form-label fw-semibold mb-2">
+                    <i class="bi bi-geo-alt ms-1"></i> المدينة
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg custom-input text-start"
+                    id="city"
+                    name="city"
+                    placeholder="أدخل اسم المدينة"
+                  />
+                </div>
+                <!-- Letter -->
+                <div class="mb-4 text-end">
+                  <label for="message" class="form-label fw-semibold mb-2">
+                    <i class="bi bi-chat-dots ms-1"></i> الرسالة
+                  </label>
+                  <textarea
+                    class="form-control custom-input text-start"
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="اكتب رسالتك هنا..."
+                    required
+                  ></textarea>
+                  <div class="invalid-feedback pe-2">يرجى إدخال الرسالة</div>
+                </div>
+                <!-- Contact Method -->
+                <div class="mb-4 text-end mx-4">
+                  <label class="form-label fw-semibold mb-2">
+                    <i class="bi bi-chat-left-text ms-1"></i> طريقة التواصل
+                    المفضلة
+                  </label>
+                  <div class="d-flex flex-wrap gap-3">
+                    <div class="form-check form-check-inline m-0 ps-0 pe-4">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="contactMethod"
+                        id="contactEmail"
+                        value="email"
+                        checked
+                      />
+                      <label class="form-check-label me-1" for="contactEmail"
+                        >البريد الإلكتروني</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline m-0 ps-0 pe-4">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="contactMethod"
+                        id="contactPhone"
+                        value="phone"
+                      />
+                      <label class="form-check-label me-1" for="contactPhone"
+                        >الهاتف</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline m-0 ps-0 pe-4">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="contactMethod"
+                        id="contactWhatsApp"
+                        value="whatsapp"
+                      />
+                      <label class="form-check-label me-1" for="contactWhatsApp"
+                        >واتساب</label
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Type of Services -->
+                <div class="mb-4 text-end">
+                  <label class="form-label fw-semibold mb-2">
+                    <i class="bi bi-star ms-1"></i> الخدمات المطلوبة
+                  </label>
+                  <div class="d-flex flex-wrap gap-3 mx-4">
+                    <div class="form-check form-check-inline m-0 ps-0 pe-4">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="serviceDesign"
+                        value="design"
+                      />
+                      <label class="form-check-label me-1" for="serviceDesign"
+                        >تصميم</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline m-0 ps-0 pe-4">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="serviceDevelopment"
+                        value="development"
+                      />
+                      <label
+                        class="form-check-label me-1"
+                        for="serviceDevelopment"
+                        >تطوير</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline m-0 ps-0 pe-4">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="serviceMarketing"
+                        value="marketing"
+                      />
+                      <label
+                        class="form-check-label me-1"
+                        for="serviceMarketing"
+                        >تسويق</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline m-0 ps-0 pe-4">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="serviceConsulting"
+                        value="consulting"
+                      />
+                      <label
+                        class="form-check-label me-1"
+                        for="serviceConsulting"
+                        >استشارات</label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-4 form-check form-switch p-0 text-start mx-5">
+                  <input
+                    class="form-check-input me-2"
+                    type="checkbox"
+                    id="newsletter"
+                    name="newsletter"
+                  />
+                  <label class="form-check-label fw-semibold" for="newsletter">
+                    <i class="bi bi-envelope-paper ms-1"></i> أوافق على
+                    <a href="#">الأحكام والشروط</a>
+                  </label>
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-submit-custom w-100 mt-2 border-0 shadow-sm"
+                >
+                  إرسال البيانات المتوفرة
+                  <i class="fa-solid fa-paper-plane me-1"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer
+      class="bg-dark text-white py-5 text-center position-relative overflow-hidden"
+    >
+      <div class="container position-relative z-1">
+        <h3 class="display-6 fw-bold mb-3 text-white">عبد الرحمن المصطفى</h3>
+        <p class="text-secondary fs-5 mb-4">
+          مطور ويب Full-Stack متخصص في PHP & Laravel
+        </p>
+        <hr class="border-secondary opacity-25 my-4" />
+        <p class="m-0 text-secondary">
+          &copy; 2025 عبد الرحمن المصطفى. جميع الحقوق محفوظة.
+        </p>
+      </div>
+    </footer>
+
+    <script src="../public/shared.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // ======= Validation: منع الإرسال إذا كانت الحقول المطلوبة فارغة =======
+        const form = document.getElementById("consultationForm");
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            const requiredSelectors = [
+              "#name",
+              "#email",
+              "#subject",
+              "#message",
+            ];
+            let firstInvalid = null;
+            let formValid = true;
+
+            requiredSelectors.forEach((sel) => {
+              const el = form.querySelector(sel);
+              if (!el) return;
+              const value = el.value.trim();
+              let valid = true;
+
+              if (value === "") valid = false;
+
+              if (el.type === "email" && value !== "") {
+                // استخدام تحقق HTML5 للحقل البريدي
+                valid = el.checkValidity();
+              }
+
+              if (!valid) {
+                el.classList.add("is-invalid");
+                el.classList.remove("is-valid");
+                formValid = false;
+                if (!firstInvalid) firstInvalid = el;
+              } else {
+                el.classList.remove("is-invalid");
+                el.classList.add("is-valid");
+              }
+            });
+
+            if (!formValid) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (firstInvalid && typeof firstInvalid.focus === "function") {
+                firstInvalid.focus();
+              }
+            }
+          });
+
+          // إزالة/تحديث الحالة عند التعديل الحي للحقل
+          form.addEventListener("input", function (e) {
+            const target = e.target;
+            if (!target) return;
+
+            if (target.matches("#email")) {
+              if (target.value.trim() === "" || !target.checkValidity()) {
+                target.classList.add("is-invalid");
+                target.classList.remove("is-valid");
+              } else {
+                target.classList.remove("is-invalid");
+                target.classList.add("is-valid");
+              }
+            } else if (target.matches("#name,#subject,#message")) {
+              if (target.value.trim() === "") {
+                target.classList.add("is-invalid");
+                target.classList.remove("is-valid");
+              } else {
+                target.classList.remove("is-invalid");
+                target.classList.add("is-valid");
+              }
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

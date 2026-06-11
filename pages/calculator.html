@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>عبد الرحمن المصطفى | الآلة الحاسبة</title>
+    <meta
+      name="description"
+      content="عبد الرحمن المصطفى - مطور ويب Full-Stack متخصص في PHP & Laravel"
+    />
+    <!-- Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icon Of the Main Page -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="public/profile-user-svgrepo-com.svg"
+    />
+    <!-- Bootstrap & Icons Links -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+    />
+    <link rel="stylesheet" href="../public/shared.css" />
+
+    <!-- Scripts & Stylesheets -->
+    <script src="calcEvent.js" defer></script>
+    <!-- <link rel="stylesheet" href="calcStyle.css" /> -->
+
+    <style>
+      /* إعدادات الألوان الافتراضية (الوضع المضيء) */
+      :root {
+        --body-bg: #f8fafc;
+        --body-text: #0f172a;
+        --navbar-bg: #212529; /* الحفاظ على الـ Navbar داكنة بشكل أنيق */
+
+        --hero-bg: #0dcaf0;
+        --hero-text: #ffffff;
+
+        --calc-bg: #1e293b; /* الحفاظ على جسم الحاسبة داكن ليعطي شعور الآلة الحقيقية */
+        --calc-screen-bg: #000000;
+        --calc-screen-text: #ffffff;
+        --calc-btn-digit: rgba(255, 255, 255, 0.15);
+        --calc-btn-text: #ffffff;
+
+        --card-border: rgba(0, 0, 0, 0.1);
+      }
+
+      /* متغيرات الألوان عند التحول للوضع المظلم */
+      body.dark-theme {
+        --body-bg: #0f172a;
+        --body-text: #f8fafc;
+        --navbar-bg: #090d16;
+
+        --hero-bg: #111827;
+        --hero-text: #0dcaf0;
+
+        --calc-bg: #111827;
+        --calc-screen-bg: #030712;
+        --calc-screen-text: #0dcaf0; /* توهج شاشة الحاسبة في الوضع المظلم */
+        --calc-btn-digit: rgba(255, 255, 255, 0.08);
+        --calc-btn-text: #f8fafc;
+
+        --card-border: rgba(255, 255, 255, 0.05);
+      }
+
+      body {
+        background-color: var(--body-bg);
+        color: var(--body-text);
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+
+      /* تنسيقات مخصصة مرنة للوضع الثنائي */
+      #mainNavbar,
+      .navbar-custom {
+        background-color: var(--navbar-bg) !important;
+        border-bottom: 1px solid rgba(30, 41, 59, 0.5);
+        transition: background-color 0.3s ease;
+      }
+
+      .custom-link {
+        color: rgba(248, 250, 252, 0.86);
+        transition: color 0.2s ease;
+      }
+      .custom-link:hover,
+      .custom-link.active {
+        color: #ffffff;
+      }
+
+      body.light-theme .navbar-custom {
+        background-color: rgba(255, 255, 255, 0.95) !important;
+        border-bottom: 1px solid rgba(241, 245, 249, 0.5);
+      }
+      body.light-theme .custom-link {
+        color: var(--body-text) !important;
+      }
+      body.light-theme .custom-link:hover,
+      body.light-theme .custom-link.active {
+        color: #0d6efd !important;
+      }
+
+      .btn-theme-toggle {
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+      body.light-theme .btn-theme-toggle {
+        color: var(--body-text);
+        border: 1px solid rgba(0, 0, 0, 0.12);
+      }
+
+      .hero-section {
+        background-color: var(--hero-bg) !important;
+        color: var(--hero-text) !important;
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+
+      /* كرت الحاسبة وكرت السجل */
+      .custom-calc-card {
+        background-color: var(--calc-bg) !important;
+        border: 1px solid var(--card-border) !important;
+        transition:
+          background-color 0.3s ease,
+          border 0.3s ease;
+      }
+
+      .calculator-screen {
+        background-color: var(--calc-screen-bg) !important;
+        color: var(--calc-screen-text) !important;
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+
+      /* أزرار الأرقام */
+      .btn-digit {
+        background-color: var(--calc-btn-digit) !important;
+        color: var(--calc-btn-text) !important;
+        transition:
+          background-color 0.2s ease,
+          transform 0.1s ease;
+      }
+      .btn-digit:hover {
+        background-color: rgba(255, 255, 255, 0.25) !important;
+        transform: scale(1.03);
+      }
+
+      /* زر التبديل */
+      .btn-theme-toggle {
+        transition: all 0.3s ease;
+      }
+    </style>
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <header class="sticky-top">
+      <nav
+        class="navbar navbar-expand-lg navbar-dark navbar-custom backdrop-blur sticky-top shadow-sm py-3"
+      >
+        <div class="container">
+          <a class="navbar-brand text-gradient fw-bold fs-3 m-0" href="#"
+            >نكست ليفل ماركت</a
+          >
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
+            <li class="nav-item">
+              <a class="nav-link custom-link" href="../index.html"
+                >السيرة الذاتية</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom-link" href="./blog.html">المدونة</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom-link active" href="./shop.html"
+                >المتجر</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom-link" href="./calculator.html"
+                >الحاسبة</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom-link" href="./contact.html">اتصل بنا</a>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center gap-2 order-lg-last">
+            <button
+              id="theme-toggle"
+              class="btn btn-theme-toggle d-flex align-items-center gap-2 rounded-xl-custom py-2 px-3"
+            >
+              <span id="toggle-icon">🌙</span>
+              <span id="toggle-text" class="d-none d-sm-inline"
+                >الوضع الليلي</span
+              >
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section py-4 text-center mb-4 shadow-sm">
+      <div class="container" id="hero-text">
+        <h1 class="display-4 fw-bold">
+          <i class="fa-solid fa-calculator me-2"></i> الآلة الحاسبة
+        </h1>
+        <p class="lead m-0">آلة حاسبة بسيطة لجميع العمليات الحسابية</p>
+      </div>
+    </section>
+
+    <!-- Outer container positioning calculator next to history layout -->
+    <div
+      class="container d-flex flex-column justify-content-center gap-4 align-items-center mb-5 flex-grow-1"
+      style="max-width: 500px; width: 100%"
+    >
+      <!-- Calculator layout -->
+      <div
+        class="card custom-calc-card border-0 shadow-lg p-4 rounded-4 w-100 calculator-keys"
+      >
+        <!-- Calculator Screen -->
+        <input
+          type="text"
+          class="calculator-screen form-control form-control-lg text-end border-0 mb-4 p-3 fs-1 font-monospace rounded-3 shadow-inner"
+          value="0"
+          disabled
+          readonly
+        />
+
+        <!-- Calculator Keys Setup -->
+        <div class="d-flex flex-column gap-3">
+          <!-- Row 1: Operations -->
+          <div class="row g-3">
+            <div class="col-3">
+              <button
+                type="button"
+                class="operator btn btn-info w-100 py-3 fs-4 fw-bold shadow-sm text-white"
+                value="+"
+              >
+                +
+              </button>
+            </div>
+            <div class="col-3">
+              <button
+                type="button"
+                class="operator btn btn-info w-100 py-3 fs-4 fw-bold shadow-sm text-white"
+                value="-"
+              >
+                -
+              </button>
+            </div>
+            <div class="col-3">
+              <button
+                type="button"
+                class="operator btn btn-info w-100 py-3 fs-4 fw-bold shadow-sm text-white"
+                value="*"
+              >
+                &times;
+              </button>
+            </div>
+            <div class="col-3">
+              <button
+                type="button"
+                class="operator btn btn-info w-100 py-3 fs-4 fw-bold shadow-sm text-white"
+                value="/"
+              >
+                &divide;
+              </button>
+            </div>
+          </div>
+
+          <!-- Row 2: Grid Digits and Action triggers -->
+          <div class="row g-3">
+            <div class="col-9">
+              <div class="row g-3 mb-3">
+                <div class="col-4">
+                  <button
+                    type="button"
+                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
+                    value="7"
+                  >
+                    7
+                  </button>
+                </div>
+                <div class="col-4">
+                  <button
+                    type="button"
+                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
+                    value="8"
+                  >
+                    8
+                  </button>
+                </div>
+                <div class="col-4">
+                  <button
+                    type="button"
+                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
+                    value="9"
+                  >
+                    9
+                  </button>
+                </div>
+              </div>
+              <div class="row g-3 mb-3">
+                <div class="col-4">
+                  <button
+                    type="button"
+                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
+                    value="4"
+                  >
+                    4
+                  </button>
+                </div>
+                <div class="col-4">
+                  <button
+                    type="button"
+                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
+                    value="5"
+                  >
+                    5
+                  </button>
+                </div>
+                <div class="col-4">
+                  <button
+                    type="button"
+                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
+                    value="6"
+                  >
+                    6
+                  </button>
+                </div>
+              </div>
+              <div class="row g-3 mb-3">
+                <div class="col-4">
+                  <button
+                    type="button"
+                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
+                    value="1"
+                  >
+                    1
+                  </button>
+                </div>
+                <div class="col-4">
+                  <button
+                    type="button"
+                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
+                    value="2"
+                  >
+                    2
+                  </button>
+                </div>
+                <div class="col-4">
+                  <button
+                    type="button"
+                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
+                    value="3"
+                  >
+                    3
+                  </button>
+                </div>
+              </div>
+              <div class="row g-3">
+                <div class="col-8">
+                  <button
+                    type="button"
+                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
+                    value="0"
+                  >
+                    0
+                  </button>
+                </div>
+                <div class="col-4">
+                  <button
+                    type="button"
+                    class="decimal btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
+                    value="."
+                  >
+                    .
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Side Command Layout -->
+            <div class="col-3 d-flex flex-column gap-3">
+              <button
+                type="button"
+                class="all-clear btn btn-danger h-50 py-3 fs-5 fw-bold shadow-sm"
+                value="all-clear"
+              >
+                AC
+              </button>
+              <button
+                type="button"
+                class="operator btn btn-warning text-white h-50 py-3 fs-4 fw-bold shadow-sm"
+                value="="
+              >
+                =
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- الاختصار البرمجي لعرض التاريخ والسجلات بشكل أنيق متمركز -->
+      <div class="w-100 text-center">
+        <button
+          class="btn btn-primary px-4 py-2 rounded-3 shadow-sm mb-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#historyWidget"
+          aria-expanded="false"
+          aria-controls="historyWidget"
+        >
+          <i class="fa-solid fa-history me-2"></i> السجل (History)
+        </button>
+
+        <div class="collapse" id="historyWidget">
+          <div
+            class="card custom-calc-card border-0 shadow-lg p-4 rounded-4 d-flex flex-column text-start mx-auto"
+            style="max-width: 100%; min-width: 280px; max-height: 350px"
+          >
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="text-white m-0 fs-5">السجل البرمجي</h4>
+              <button
+                type="button"
+                id="clearHistoryBtn"
+                class="btn btn-sm btn-outline-danger"
+              >
+                مسح
+              </button>
+            </div>
+            <div class="overflow-auto flex-grow-1 pe-1">
+              <ul
+                id="historyList"
+                class="list-group list-group-flush rounded-3"
+              >
+                <!-- المخرجات تظهر هنا ديناميكياً -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer
+      class="bg-dark text-white py-5 text-center position-relative overflow-hidden mt-auto"
+    >
+      <div class="container position-relative z-1">
+        <h3 class="display-6 fw-bold mb-3 text-white">عبد الرحمن المصطفى</h3>
+        <p class="text-secondary fs-5 mb-4">
+          مطور ويب Full-Stack متخصص في PHP & Laravel
+        </p>
+        <hr class="border-secondary opacity-25 my-4" />
+        <p class="m-0 text-secondary">
+          &copy; 2026 عبد الرحمن المصطفى. جميع الحقوق محفوظة.
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../public/shared.js"></script>
+  </body>
+</html>

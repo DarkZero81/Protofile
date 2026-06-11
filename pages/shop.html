@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نكست ليفل ماركت | المتجر الإلكتروني</title>
+
+    <!-- الخطوط والأيقونات من التصميم الجديد -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+    />
+    <link rel="stylesheet" href="../public/shared.css" />
+
+    <style>
+      /* الألوان والمتغيرات من التصميم الجديد */
+      :root {
+        --primary: #1e293b;
+        --secondary: #3b82f6;
+        --accent: #ff781f; /* الحفاظ على لون الأطعمة الجذاب للتحفيز */
+        --dark: #0f172a;
+        --light: #f8fafc;
+      }
+
+      body {
+        font-family: "Cairo", sans-serif;
+        background-color: var(--dark); /* الافتراضي وضع ليلي فخم */
+        color: #f8fafc;
+      }
+
+      /* الوضع النهاري المتناسق مع الهوية الجديدة */
+      body.light-theme {
+        background-color: var(--light) !important;
+        color: var(--dark) !important;
+      }
+      body.light-theme .navbar-custom {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-bottom: 1px solid rgba(241, 245, 249, 0.5);
+      }
+      body.light-theme .card {
+        background-color: #ffffff;
+        color: var(--dark);
+      }
+      body.light-theme .offcanvas {
+        background-color: #ffffff;
+        color: var(--dark);
+      }
+      body.light-theme .text-muted-custom {
+        color: #64748b !important;
+      }
+
+      /* عناصر التنقل والتصميم */
+      .navbar-custom {
+        background-color: rgba(15, 23, 42, 0.95);
+        border-bottom: 1px solid rgba(30, 41, 59, 0.5);
+      }
+      .custom-link {
+        color: rgba(248, 250, 252, 0.86);
+        transition: color 0.2s ease;
+      }
+      .custom-link:hover,
+      .custom-link.active {
+        color: #ffffff;
+      }
+      body.light-theme .navbar-custom {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-bottom: 1px solid rgba(241, 245, 249, 0.5);
+      }
+      body.light-theme .navbar-custom .custom-link {
+        color: var(--dark);
+      }
+      body.light-theme .navbar-custom .custom-link:hover,
+      body.light-theme .navbar-custom .custom-link.active {
+        color: var(--secondary);
+      }
+      body.light-theme .btn-theme-toggle {
+        color: var(--dark);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .card {
+        background-color: #1e293b;
+        border: none;
+        color: #f8fafc;
+      }
+
+      .product-visual {
+        position: relative;
+      }
+
+      .product-image {
+        width: 100%;
+        height: 180px;
+        border-radius: 1.5rem;
+        object-fit: cover;
+        box-shadow: 0 1rem 2rem rgba(15, 23, 42, 0.25);
+      }
+
+      .icon-badge {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 42px;
+        height: 42px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: rgba(59, 130, 246, 0.85);
+        box-shadow: 0 0.6rem 1rem rgba(15, 23, 42, 0.18);
+      }
+      .icon-badge i {
+        color: #ffffff;
+      }
+
+      .price {
+        color: var(--secondary);
+        font-weight: 700;
+        font-size: 1.25rem;
+      }
+
+      .btn-theme-toggle {
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      body.light-theme .btn-theme-toggle {
+        color: var(--dark);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .offcanvas {
+        background-color: #1e293b;
+        color: white;
+      }
+
+      /* أنيميشن التلاشي عند الظهور */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease-out;
+      }
+      .visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .text-muted-custom {
+        color: #94a3b8;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- شريط التنقل المتطور -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark navbar-custom backdrop-blur sticky-top shadow-sm py-3"
+    >
+      <div class="container">
+        <a class="navbar-brand text-gradient fw-bold fs-3 m-0" href="#"
+          >نكست ليفل ماركت</a
+        >
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
+          <li class="nav-item">
+            <a class="nav-link custom-link" href="../index.html"
+              >السيرة الذاتية</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link custom-link" href="./blog.html">المدونة</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link custom-link active" href="./shop.html">المتجر</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link custom-link" href="./calculator.html">الحاسبة</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link custom-link" href="./contact.html">اتصل بنا</a>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center gap-2 order-lg-last">
+          <button
+            id="theme-toggle"
+            class="btn btn-theme-toggle d-flex align-items-center gap-2 rounded-xl-custom py-2 px-3"
+          >
+            <span id="toggle-icon">🌙</span>
+            <span id="toggle-text" class="d-none d-sm-inline"
+              >الوضع الليلي</span
+            >
+          </button>
+          <button
+            class="btn btn-primary bg-secondary-custom border-0 rounded-xl-custom py-2 px-3 fw-medium position-relative"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#cartSidebar"
+          >
+            <i class="fas fa-shopping-basket me-1"></i> السلة
+            <span class="badge bg-danger rounded-pill ms-1" id="cartCount"
+              >0</span
+            >
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- سلة المشتريات الجانبية -->
+    <div
+      class="offcanvas offcanvas-end backdrop-blur"
+      tabindex="-1"
+      id="cartSidebar"
+    >
+      <div
+        class="offcanvas-header border-bottom border-secondary border-opacity-10"
+      >
+        <h5 class="offcanvas-title fw-bold">
+          <i class="fas fa-shopping-cart text-secondary me-2"></i>سلة مشترياتك
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+        ></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column justify-content-between">
+        <div id="cartItemsList" class="d-flex flex-column gap-3">
+          <!-- تظهر العناصر هنا تلقائياً -->
+        </div>
+        <div class="pt-3 border-top border-secondary border-opacity-10">
+          <div class="d-grid">
+            <button
+              class="btn btn-danger rounded-xl-custom py-2 fw-bold"
+              onclick="clearCart()"
+            >
+              <i class="fas fa-trash-alt me-2"></i>مسح الكل
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- قسم الهيرو الجذاب بالتدرجات الجديدة -->
+    <section
+      class="bg-gradient-hero py-5 position-relative overflow-hidden mb-5"
+    >
+      <div class="container position-relative z-1 my-4">
+        <div class="row align-items-center justify-content-center text-center">
+          <div class="col-lg-8 d-flex flex-column gap-3">
+            <div>
+              <span
+                class="d-inline-flex align-items-center px-4 py-2 bg-white bg-opacity-10 text-secondary rounded-pill fw-semibold border border-primary-subtle backdrop-blur"
+              >
+                <i class="fas fa-store me-2"></i> أهلاً وسهلاً بكم في متجرنا
+              </span>
+            </div>
+            <h1 class="display-3 fw-bold lh-sm text-white body-theme-target">
+              منتجات استثنائية <span class="text-gradient">لعشاق الجودة</span>
+            </h1>
+            <p class="fs-4 text-muted-custom fw-medium">
+              تسوق أفضل المنتجات مع عروض حصرية وشحن سريع.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- شبكة المنتجات وبطاقات الطعام المتطورة -->
+    <div class="container my-5">
+      <h2 class="display-5 fw-bold text-center mb-5">
+        أبرز المنتجات الإلكترونية
+      </h2>
+      <div class="row row-cols-1 row-cols-md-3 g-4" id="foodGrid"></div>
+    </div>
+
+    <!-- التذييل العصري -->
+    <footer class="bg-dark text-white py-5 text-center mt-5">
+      <div class="container">
+        <h3 class="fw-bold mb-3 text-gradient fs-4">نكست ليفل ماركت</h3>
+        <p class="text-muted-custom small m-0">
+          &copy; 2026 جميع الحقوق محفوظة. تم التطوير بكل حب.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // بيانات الوجبات
+      const meals = [
+        {
+          id: 1,
+          title: "سماعة بلوتوث برو",
+          price: 149.99,
+          desc: "صوت واضح وعزل ضوضاء متقدم مع تصميم مريح.",
+          image: "../public/pictures/img-1.jpg",
+          icon: "fa-headphones",
+        },
+        {
+          id: 2,
+          title: "سماعة رأس الألعاب",
+          price: 169.99,
+          desc: "إضاءة RGB وصوت محيطي لتجربة ألعاب غامرة.",
+          image: "../public/pictures/img-2.jpg",
+          icon: "fa-gamepad",
+        },
+        {
+          id: 3,
+          title: "سماعة ذكية منزلية",
+          price: 179.99,
+          desc: "مساعد صوتي متكامل وتحكم ذكي لأجهزة المنزل.",
+          image: "../public/pictures/img-3.jpg",
+          icon: "fa-microchip",
+        },
+        {
+          id: 4,
+          title: "سماعة رياضية مقاومة للماء",
+          price: 134.99,
+          desc: "انزلاق آمن وصوت قوي أثناء التمارين.",
+          image: "../public/pictures/img-4.jpg",
+          icon: "fa-water",
+        },
+        {
+          id: 5,
+          title: "سماعة مكتبية فاخرة",
+          price: 159.99,
+          desc: "راحة طوال اليوم وميكروفون عالي الجودة.",
+          image: "../public/pictures/img-5.jpg",
+          icon: "fa-microphone",
+        },
+        {
+          id: 6,
+          title: "سماعة سفر مدمجة",
+          price: 129.99,
+          desc: "بطارية طويلة الأمد وتصميم قابل للطي.",
+          image: "../public/pictures/img-6.jpg",
+          icon: "fa-suitcase-rolling",
+        },
+      ];
+
+      let cart = [];
+
+      // حقن وتوليد بطاقات الطعام ديناميكياً مع حركات Lift المأخوذة من التصميم
+      const grid = document.getElementById("foodGrid");
+      meals.forEach((meal) => {
+        grid.innerHTML += `
+            <div class="col fade-in">
+                <div class="card h-100 p-3 rounded-2xl-custom shadow-sm hover-lift">
+                    <div class="card-body d-flex flex-column justify-content-between gap-3">
+                        <div class="product-visual">
+                            <img
+                              src="${meal.image}"
+                              alt="${meal.title}"
+                              class="product-image"
+                            />
+                            <div class="icon-badge">
+                                <i class="fas ${meal.icon} fs-5"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="card-title fw-bold fs-4 mb-2">${meal.title}</h5>
+                            <p class="small text-muted-custom leading-relaxed">${meal.desc}</p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-10">
+                            <span class="price">${meal.price}$</span>
+                            <button class="btn btn-primary bg-secondary-custom border-0 rounded-xl-custom btn-sm px-3 py-2 fw-medium" onclick="addToCart(${meal.id})">
+                                <i class="fas fa-plus-circle me-1"></i> إضافة للسلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+      });
+
+      // منطق السلة التفاعلي المطور
+      function addToCart(id) {
+        const meal = meals.find((m) => m.id === id);
+        const existing = cart.find((item) => item.id === id);
+        if (existing) {
+          existing.qty++;
+        } else {
+          cart.push({ ...meal, qty: 1 });
+        }
+        updateCartUI();
+      }
+
+      function changeQty(id, delta) {
+        const item = cart.find((i) => i.id === id);
+        if (item) {
+          item.qty += delta;
+          if (item.qty <= 0) cart = cart.filter((i) => i.id !== id);
+        }
+        updateCartUI();
+      }
+
+      function updateCartUI() {
+        const list = document.getElementById("cartItemsList");
+        const count = document.getElementById("cartCount");
+        list.innerHTML = "";
+        let totalQty = 0;
+
+        if (cart.length === 0) {
+          list.innerHTML =
+            '<p class="text-center text-muted-custom py-4">السلة فارغة حالياً</p>';
+        }
+
+        cart.forEach((item) => {
+          totalQty += item.qty;
+          list.innerHTML += `
+                <div class="d-flex justify-content-between align-items-center p-3 rounded-xl-custom shadow-sm border border-secondary border-opacity-10" style="background: rgba(255,255,255, 0.03)">
+                    <span class="fw-medium">${item.title}</span>
+                    <div class="d-flex align-items-center gap-2">
+                        <button class="btn btn-sm btn-dark rounded-circle border border-secondary border-opacity-20 d-flex align-items-center justify-content-center" style="width:28px; height:28px;" onclick="changeQty(${item.id}, -1)">-</button>
+                        <span class="mx-1 fw-bold">${item.qty}</span>
+                        <button class="btn btn-sm btn-primary bg-secondary-custom border-0 rounded-circle d-flex align-items-center justify-content-center" style="width:28px; height:28px;" onclick="changeQty(${item.id}, 1)">+</button>
+                    </div>
+                </div>
+            `;
+        });
+        count.innerText = totalQty;
+      }
+      updateCartUI();
+
+      function clearCart() {
+        cart = [];
+        updateCartUI();
+      }
+
+      // تفعيل مراقب تأثيرات الحركة والظهور بسلاسة عند التمرير لأسفل
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      });
+      document
+        .querySelectorAll(".fade-in")
+        .forEach((card) => observer.observe(card));
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../public/shared.js"></script>
+  </body>
+</html>
