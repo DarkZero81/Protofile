@@ -1,0 +1,132 @@
+:root {
+  --primary: #1e293b;
+  --secondary: #3b82f6;
+  --accent: #ef4444;
+  --dark: #0f172a;
+  --light: #f8fafc;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+  overflow-x: hidden;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.text-primary-custom {
+  color: var(--primary);
+}
+.text-secondary-custom {
+  color: var(--secondary);
+}
+.bg-primary-custom {
+  background-color: var(--primary);
+}
+.bg-secondary-custom {
+  background-color: var(--secondary);
+}
+.text-muted-custom {
+  color: #64748b !important;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #60a5fa, var(--secondary), #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.backdrop-blur {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.rounded-xl-custom {
+  border-radius: 1rem;
+}
+.rounded-2xl-custom {
+  border-radius: 1.5rem;
+}
+.rounded-3xl-custom {
+  border-radius: 2rem;
+}
+
+.navbar-custom {
+  border-bottom: 1px solid rgba(241, 245, 249, 0.5);
+  transition:
+    background-color 0.3s ease,
+    border-bottom 0.3s ease;
+}
+
+.btn-theme-toggle {
+  transition: all 0.3s ease;
+}
+
+.btn-theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.hover-lift {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-in-out forwards;
+}
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+.animate-bounce-slow {
+  animation: bounce 2s infinite;
+}
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+  }
+}
