@@ -206,6 +206,10 @@
         color: var(--secondary) !important;
       }
 
+      body:not(.dark-theme) .navbar-toggler-icon {
+        filter: invert(1);
+      }
+
       body.light-theme .blog-hero {
         background: linear-gradient(
           135deg,
