@@ -3,23 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>عبد الرحمن المصطفى | الآلة الحاسبة</title>
-    <meta
-      name="description"
-      content="عبد الرحمن المصطفى - مطور ويب Full-Stack متخصص في PHP & Laravel"
-    />
-    <!-- Font -->
+    <title>المدونة التقنية</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <!-- Icon Of the Main Page -->
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="public/profile-user-svgrepo-com.svg"
-    />
-    <!-- Bootstrap & Icons Links -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -29,133 +17,296 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
     />
     <link rel="stylesheet" href="../public/shared.css" />
-    <!-- Shared CSS is used for the consistent theme across pages. Calculator-specific styles are kept right here so this page stays self-contained. -->
-
-    <!-- Scripts & Stylesheets -->
-    <!-- <link rel="stylesheet" href="calcStyle.css" /> -->
-
+    <!-- Shared site styles are loaded here. This page also has custom blog styling for the hero area and article cards. -->
     <style>
-      /* إعدادات الألوان الافتراضية (الوضع المضيء) */
+      /* الستايل والوضع الافتراضي (الوضع المظلم Dark Mode هو الأساس هنا) */
       :root {
-        --body-bg: #f8fafc;
-        --body-text: #0f172a;
-        --navbar-bg: #212529; /* الحفاظ على الـ Navbar داكنة بشكل أنيق */
-
-        --hero-bg: #0dcaf0;
-        --hero-text: #ffffff;
-
-        --calc-bg: #1e293b; /* الحفاظ على جسم الحاسبة داكن ليعطي شعور الآلة الحقيقية */
-        --calc-screen-bg: #000000;
-        --calc-screen-text: #ffffff;
-        --calc-btn-digit: rgba(255, 255, 255, 0.15);
-        --calc-btn-text: #ffffff;
-
-        --card-border: rgba(0, 0, 0, 0.1);
-      }
-
-      /* متغيرات الألوان عند التحول للوضع المظلم */
-      body.dark-theme {
-        --body-bg: #0f172a;
-        --body-text: #f8fafc;
-        --navbar-bg: #090d16;
-
-        --hero-bg: #111827;
-        --hero-text: #0dcaf0;
-
-        --calc-bg: #111827;
-        --calc-screen-bg: #030712;
-        --calc-screen-text: #0dcaf0; /* توهج شاشة الحاسبة في الوضع المظلم */
-        --calc-btn-digit: rgba(255, 255, 255, 0.08);
-        --calc-btn-text: #f8fafc;
-
-        --card-border: rgba(255, 255, 255, 0.05);
+        --primary: #1e293b;
+        --secondary: #3b82f6;
+        --accent: #ef4444;
+        --dark: #0f172a;
+        --light: #f8fafc;
       }
 
       body {
-        background-color: var(--body-bg);
-        color: var(--body-text);
-        transition:
-          background-color 0.3s ease,
-          color 0.3s ease;
+        font-family: "Cairo", sans-serif;
+        background-color: var(--dark);
+        color: var(--light);
       }
 
-      .custom-link {
-        color: rgba(248, 250, 252, 0.86);
-        transition: color 0.2s ease;
+      .blog-hero {
+        background: linear-gradient(
+          135deg,
+          #0f172a 0%,
+          #1e293b 50%,
+          #111827 100%
+        );
+        transition: background 0.3s ease;
       }
-      .custom-link:hover,
-      .custom-link.active {
+
+      /* تنسيق النصوص داخل الهيرو لتبقى ثابتة ومحمية */
+      .blog-hero .hero-title {
+        color: #ffffff !important;
+      }
+      .blog-hero .hero-desc {
+        color: #94a3b8 !important;
+      }
+
+      /* قسم المدونة الرئيسي وخلفيته المرنة */
+      .blog-section {
+        background-color: var(--dark);
+        transition: background-color 0.3s ease;
+      }
+
+      .article-card {
+        background-color: #1e293b;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        height: 100%;
+        color: var(--light);
+      }
+      .article-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+      }
+
+      .category-badge {
+        background-color: rgba(59, 130, 246, 0.15);
+        color: #60a5fa;
+        padding: 0.35rem 1rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .btn-read-more {
+        background-color: var(--secondary);
+        color: white;
+        border: none;
+        border-radius: 0.75rem;
+        padding: 0.6rem 1.5rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      .btn-read-more:hover {
+        background-color: #2563eb;
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* تحسين صندوق البحث ليقبل الألوان المتغيرة */
+      .search-container .input-group-text {
+        background-color: #1e293b;
+        border-color: #334155;
+        color: var(--secondary);
+        transition: all 0.3s ease;
+      }
+
+      .search-box {
+        border: 2px solid #334155;
+        border-radius: 1rem;
+        padding: 0.75rem 1.25rem;
+        transition: all 0.3s ease;
+        background-color: #1e293b;
+        color: white;
+      }
+      .search-box:focus {
+        border-color: var(--secondary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        outline: none;
+        background-color: #1e293b;
+        color: white;
+      }
+      .search-box::placeholder {
+        color: #94a3b8;
+      }
+
+      .filter-btn {
+        background-color: #1e293b;
+        border: 2px solid #334155;
+        border-radius: 1rem;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        color: #cbd5e1;
+        transition: all 0.3s ease;
+      }
+      .filter-btn:hover {
+        border-color: var(--secondary);
+        color: var(--secondary);
+      }
+      .filter-btn.active {
+        background-color: var(--secondary);
+        border-color: var(--secondary);
+        color: white;
+      }
+
+      .article-date {
+        color: #94a3b8;
+        font-size: 0.9rem;
+      }
+      .article-title {
+        color: white;
+        font-weight: 700;
+        font-size: 1.25rem;
+        line-height: 1.6;
+      }
+      .article-excerpt {
+        color: #cbd5e1;
+        line-height: 1.7;
+        font-size: 0.95rem;
+      }
+      .hidden-article {
+        display: none !important;
+      }
+      .article-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .btn-theme-toggle {
         color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        background: transparent;
+      }
+
+      footer {
+        background-color: #0f172a;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 2rem 0;
+        margin-top: 4rem;
+        text-align: center;
+        color: #94a3b8;
+        transition: all 0.3s ease;
+      }
+
+      /* ========================================================
+         إعدادات وضع الإضاءة (Light Theme) المنظمة بدون تكرار
+         ======================================================== */
+      body.light-theme {
+        background-color: #f1f5f9;
+        color: #1e293b;
       }
 
       body.light-theme .navbar-custom {
-        background-color: rgba(255, 255, 255, 0.95) !important;
-        border-bottom: 1px solid rgba(241, 245, 249, 0.5);
-      }
-      body.light-theme .custom-link {
-        color: var(--body-text) !important;
-      }
-      body.light-theme .custom-link:hover,
-      body.light-theme .custom-link.active {
-        color: #0d6efd !important;
+        background-color: rgba(255, 255, 255, 0.95);
+        border-bottom: 1px solid #e2e8f0;
       }
 
-      .btn-theme-toggle {
-        color: #fff;
-        border: 1px solid rgba(255, 255, 255, 0.25);
+      body.light-theme .navbar-nav .nav-link,
+      body.light-theme .navbar-brand {
+        color: #1e293b !important;
       }
+      body.light-theme .navbar-nav .nav-link:hover {
+        color: var(--secondary) !important;
+      }
+
+      body.light-theme .blog-hero {
+        background: linear-gradient(
+          135deg,
+          #0f172a 0%,
+          #1e293b 50%,
+          #111827 100%
+        );
+      }
+
+      body.light-theme .blog-hero .hero-title {
+        color: #ffffff !important;
+      }
+      body.light-theme .blog-hero .hero-desc {
+        color: #94a3b8 !important;
+      }
+
+      body.light-theme .text-gradient {
+        background: linear-gradient(
+          to right,
+          #60a5fa,
+          var(--secondary),
+          #60a5fa
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      body.light-theme .blog-section {
+        background-color: #f8fafc !important;
+      }
+
+      body.light-theme .article-card {
+        background-color: #ffffff;
+        color: #1e293b;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      }
+      body.light-theme .article-title {
+        color: #1e293b;
+      }
+      body.light-theme .article-excerpt {
+        color: #475569;
+      }
+      body.light-theme .article-date {
+        color: #64748b;
+      }
+      body.light-theme .category-badge {
+        background-color: rgba(59, 130, 246, 0.1);
+        color: var(--secondary);
+      }
+
+      body.light-theme .search-container .input-group-text {
+        background-color: #ffffff;
+        border-color: #cbd5e1;
+      }
+
+      body.light-theme .search-box {
+        background-color: #ffffff;
+        border-color: #cbd5e1;
+        color: #1e293b;
+      }
+      body.light-theme .search-box:focus {
+        background-color: #ffffff;
+        color: #1e293b;
+      }
+      body.light-theme .search-box::placeholder {
+        color: #94a3b8;
+      }
+
+      body.light-theme .filter-btn {
+        background-color: #ffffff;
+        border-color: #cbd5e1;
+        color: #1e293b;
+      }
+      body.light-theme .filter-btn:hover {
+        border-color: var(--secondary);
+        color: var(--secondary);
+        background-color: #eff6ff;
+      }
+      body.light-theme .filter-btn.active {
+        background-color: var(--secondary);
+        border-color: var(--secondary);
+        color: white;
+      }
+
       body.light-theme .btn-theme-toggle {
-        color: var(--body-text);
-        border: 1px solid rgba(0, 0, 0, 0.12);
+        color: #1e293b;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+      }
+      body.light-theme .btn-theme-toggle:hover {
+        background: rgba(0, 0, 0, 0.05);
       }
 
-      .hero-section {
-        background-color: var(--hero-bg) !important;
-        color: var(--hero-text) !important;
-        transition:
-          background-color 0.3s ease,
-          color 0.3s ease;
-      }
-
-      /* كرت الحاسبة وكرت السجل */
-      .custom-calc-card {
-        background-color: var(--calc-bg) !important;
-        border: 1px solid var(--card-border) !important;
-        transition:
-          background-color 0.3s ease,
-          border 0.3s ease;
-      }
-
-      .calculator-screen {
-        background-color: var(--calc-screen-bg) !important;
-        color: var(--calc-screen-text) !important;
-        transition:
-          background-color 0.3s ease,
-          color 0.3s ease;
-      }
-
-      /* أزرار الأرقام */
-      .btn-digit {
-        background-color: var(--calc-btn-digit) !important;
-        color: var(--calc-btn-text) !important;
-        transition:
-          background-color 0.2s ease,
-          transform 0.1s ease;
-      }
-      .btn-digit:hover {
-        background-color: rgba(255, 255, 255, 0.25) !important;
-        transform: scale(1.03);
-      }
-
-      /* زر التبديل */
-      .btn-theme-toggle {
-        transition: all 0.3s ease;
+      body.light-theme footer {
+        background-color: #1e293b;
+        color: #cbd5e1;
       }
     </style>
   </head>
 
-  <body class="d-flex flex-column min-vh-100">
-    <!-- This page is built as a standalone calculator experience, while still matching the main site theme and navigation. -->
+  <body>
     <header>
       <nav
         class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm py-3"
@@ -173,6 +324,9 @@
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="تبديل القائمة"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -219,416 +373,1359 @@
       </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section py-4 text-center mb-4 shadow-sm">
-      <div class="container" id="hero-text">
-        <h1 class="display-4 fw-bold">
-          <i class="fa-solid fa-calculator me-2"></i> الآلة الحاسبة
-        </h1>
-        <p class="lead m-0">آلة حاسبة بسيطة لجميع العمليات الحسابية</p>
-      </div>
-    </section>
-
-    <!-- Outer container positioning calculator next to history layout -->
-    <div
-      class="container d-flex flex-column justify-content-center gap-4 align-items-center mb-5 flex-grow-1"
-      style="max-width: 500px; width: 100%"
-    >
-      <!-- Calculator layout -->
-      <div
-        class="card custom-calc-card border-0 shadow-lg p-4 rounded-4 w-100 calculator-keys"
+    <main id="main-content">
+      <section
+        id="home"
+        class="blog-hero py-5 position-relative overflow-hidden"
       >
-        <!-- Calculator Screen -->
-        <input
-          type="text"
-          class="calculator-screen form-control form-control-lg text-end border-0 mb-4 p-3 fs-1 font-monospace rounded-3 shadow-inner"
-          value="0"
-          disabled
-          readonly
-        />
-
-        <!-- Calculator Keys Setup -->
-        <div class="d-flex flex-column gap-3">
-          <!-- Row 1: Operations -->
-          <div class="row g-3">
-            <div class="col-3">
-              <button
-                type="button"
-                class="operator btn btn-info w-100 py-3 fs-4 fw-bold shadow-sm text-white"
-                value="+"
-              >
-                +
-              </button>
-            </div>
-            <div class="col-3">
-              <button
-                type="button"
-                class="operator btn btn-info w-100 py-3 fs-4 fw-bold shadow-sm text-white"
-                value="-"
-              >
-                -
-              </button>
-            </div>
-            <div class="col-3">
-              <button
-                type="button"
-                class="operator btn btn-info w-100 py-3 fs-4 fw-bold shadow-sm text-white"
-                value="*"
-              >
-                &times;
-              </button>
-            </div>
-            <div class="col-3">
-              <button
-                type="button"
-                class="operator btn btn-info w-100 py-3 fs-4 fw-bold shadow-sm text-white"
-                value="/"
-              >
-                &divide;
-              </button>
-            </div>
-          </div>
-
-          <!-- Row 2: Grid Digits and Action triggers -->
-          <div class="row g-3">
-            <div class="col-9">
-              <div class="row g-3 mb-3">
-                <div class="col-4">
-                  <button
-                    type="button"
-                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
-                    value="7"
-                  >
-                    7
-                  </button>
-                </div>
-                <div class="col-4">
-                  <button
-                    type="button"
-                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
-                    value="8"
-                  >
-                    8
-                  </button>
-                </div>
-                <div class="col-4">
-                  <button
-                    type="button"
-                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
-                    value="9"
-                  >
-                    9
-                  </button>
-                </div>
-              </div>
-              <div class="row g-3 mb-3">
-                <div class="col-4">
-                  <button
-                    type="button"
-                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
-                    value="4"
-                  >
-                    4
-                  </button>
-                </div>
-                <div class="col-4">
-                  <button
-                    type="button"
-                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
-                    value="5"
-                  >
-                    5
-                  </button>
-                </div>
-                <div class="col-4">
-                  <button
-                    type="button"
-                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
-                    value="6"
-                  >
-                    6
-                  </button>
-                </div>
-              </div>
-              <div class="row g-3 mb-3">
-                <div class="col-4">
-                  <button
-                    type="button"
-                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
-                    value="1"
-                  >
-                    1
-                  </button>
-                </div>
-                <div class="col-4">
-                  <button
-                    type="button"
-                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
-                    value="2"
-                  >
-                    2
-                  </button>
-                </div>
-                <div class="col-4">
-                  <button
-                    type="button"
-                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
-                    value="3"
-                  >
-                    3
-                  </button>
-                </div>
-              </div>
-              <div class="row g-3">
-                <div class="col-8">
-                  <button
-                    type="button"
-                    class="btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
-                    value="0"
-                  >
-                    0
-                  </button>
-                </div>
-                <div class="col-4">
-                  <button
-                    type="button"
-                    class="decimal btn btn-digit border-0 w-100 py-3 fs-4 fw-bold shadow-sm"
-                    value="."
-                  >
-                    .
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Side Command Layout -->
-            <div class="col-3 d-flex flex-column gap-3">
-              <button
-                type="button"
-                class="all-clear btn btn-danger h-50 py-3 fs-5 fw-bold shadow-sm"
-                value="all-clear"
-              >
-                AC
-              </button>
-              <button
-                type="button"
-                class="operator btn btn-warning text-white h-50 py-3 fs-4 fw-bold shadow-sm"
-                value="="
-              >
-                =
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- الاختصار البرمجي لعرض التاريخ والسجلات بشكل أنيق متمركز -->
-      <div class="w-100 text-center">
-        <button
-          class="btn btn-primary px-4 py-2 rounded-3 shadow-sm mb-3"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#historyWidget"
-          aria-expanded="false"
-          aria-controls="historyWidget"
+        <div
+          class="position-absolute inset-0 w-100 h-100 overflow-hidden pointer-events-none"
         >
-          <i class="fa-solid fa-history me-2"></i> السجل (History)
-        </button>
-
-        <div class="collapse" id="historyWidget">
           <div
-            class="card custom-calc-card border-0 shadow-lg p-4 rounded-4 d-flex flex-column text-start mx-auto"
-            style="max-width: 100%; min-width: 280px; max-height: 350px"
-          >
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h4 class="text-white m-0 fs-5">السجل البرمجي</h4>
-              <button
-                type="button"
-                id="clearHistoryBtn"
-                class="btn btn-sm btn-outline-danger"
-              >
-                مسح
-              </button>
-            </div>
-            <div class="overflow-auto flex-grow-1 pe-1">
-              <ul
-                id="historyList"
-                class="list-group list-group-flush rounded-3"
-              >
-                <!-- المخرجات تظهر هنا ديناميكياً -->
-              </ul>
+            class="position-absolute rounded-circle blur-3xl animate-float"
+            style="
+              top: -100px;
+              right: -100px;
+              width: 300px;
+              height: 300px;
+              background: rgba(59, 130, 246, 0.15);
+            "
+          ></div>
+          <div
+            class="position-absolute rounded-circle blur-3xl animate-float"
+            style="
+              bottom: -100px;
+              left: -100px;
+              width: 300px;
+              height: 300px;
+              background: rgba(236, 72, 153, 0.15);
+              animation-delay: 2s;
+            "
+          ></div>
+          <div
+            class="position-absolute rounded-circle blur-3xl animate-float"
+            style="
+              top: 50%;
+              left: 50%;
+              width: 200px;
+              height: 200px;
+              background: rgba(16, 185, 129, 0.1);
+              animation-delay: 3s;
+            "
+          ></div>
+        </div>
+        <div class="container position-relative z-1">
+          <div class="row align-items-center g-5">
+            <div
+              class="col-lg-12 text-center text-lg-start animate-fade-in d-flex flex-column gap-4"
+            >
+              <div>
+                <span
+                  class="d-inline-flex align-items-center px-4 py-2 bg-white bg-opacity-10 text-secondary rounded-pill fw-semibold border border-primary-subtle backdrop-blur"
+                >
+                  <i class="fas fa-rss ml-2 text-primary"></i> مدونة تقنية
+                </span>
+              </div>
+              <h1 class="display-3 fw-bold hero-title lh-sm">
+                <span class="text-gradient"
+                  >أحدث المقالات والأخبار التقنية</span
+                >
+              </h1>
+              <p class="fs-4 hero-desc fw-medium max-w-3xl mx-auto">
+                اكتشف أحدث التقنيات والأدوات والشروحات في عالم البرمجة والتطوير
+              </p>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
 
-    <!-- Footer -->
-    <footer
-      class="bg-dark text-white py-5 text-center position-relative overflow-hidden mt-auto"
-    >
-      <div class="container position-relative z-1">
-        <h3 class="display-6 fw-bold mb-3 text-white">عبد الرحمن المصطفى</h3>
-        <p class="text-secondary fs-5 mb-4">
-          مطور ويب Full-Stack متخصص في PHP & Laravel
-        </p>
-        <hr class="border-secondary opacity-25 my-4" />
-        <p class="m-0 text-secondary">
-          &copy; 2026 عبد الرحمن المصطفى. جميع الحقوق محفوظة.
-        </p>
+      <section id="blog" class="blog py-5 blog-section">
+        <div class="container my-5">
+          <div class="row g-4 mb-5">
+            <div class="col-md-8 mx-auto">
+              <div class="d-flex flex-column gap-3">
+                <div class="input-group search-container">
+                  <span
+                    class="input-group-text border-end-0 rounded-start-xl-custom"
+                  >
+                    <i class="fas fa-search text-secondary"></i>
+                  </span>
+                  <input
+                    type="text"
+                    id="searchInput"
+                    class="form-control search-box border-start-0 rounded-end-xl-custom"
+                    placeholder="ابحث عن مقال..."
+                    oninput="filterArticles()"
+                  />
+                </div>
+                <div class="d-flex flex-wrap gap-2 justify-content-center">
+                  <button
+                    class="btn filter-btn active"
+                    onclick="filterCategory('all', this)"
+                  >
+                    <i class="fas fa-th-large me-2"></i>الكل
+                  </button>
+                  <button
+                    class="btn filter-btn"
+                    onclick="filterCategory('frontend', this)"
+                  >
+                    <i class="fas fa-laptop-code me-2"></i>فرونت إند
+                  </button>
+                  <button
+                    class="btn filter-btn"
+                    onclick="filterCategory('backend', this)"
+                  >
+                    <i class="fas fa-server me-2"></i>باك إند
+                  </button>
+                  <button
+                    class="btn filter-btn"
+                    onclick="filterCategory('mobile', this)"
+                  >
+                    <i class="fas fa-mobile-alt me-2"></i>موبايل
+                  </button>
+                  <button
+                    class="btn filter-btn"
+                    onclick="filterCategory('devops', this)"
+                  >
+                    <i class="fas fa-cloud me-2"></i>DevOps
+                  </button>
+                  <button
+                    class="btn filter-btn"
+                    onclick="filterCategory('ai', this)"
+                  >
+                    <i class="fas fa-robot me-2"></i>ذكاء اصطناعي
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4" id="articlesGrid">
+            <!-- 1 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="frontend"
+              data-title="أساسيات HTML5 للمبتدئين"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >فرونت إند</span
+                >
+                <img
+                  src="../public/pictures/img-1.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">أساسيات HTML5 للمبتدئين</h3>
+                <p class="article-excerpt mb-4">
+                  تعلم أساسيات لغة HTML5 وكيفية بناء هيكل صفحات الويب من الصفر
+                  مع أمثلة عملية.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-01</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="frontend"
+              data-title="CSS Grid vs Flexbox"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >فرونت إند</span
+                >
+                <img
+                  src="../public/pictures/img-2.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">
+                  CSS Grid vs Flexbox: أيهما تختار؟
+                </h3>
+                <p class="article-excerpt mb-4">
+                  مقارنة شاملة بين CSS Grid و Flexbox ومتى تستخدم كل منهما في
+                  تصميم الواجهات.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-02</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="frontend"
+              data-title="مقدمة في Bootstrap 5"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >فرونت إند</span
+                >
+                <img
+                  src="../public/pictures/img-3.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">
+                  مقدمة في Bootstrap 5: بناء واجهات سريعة
+                </h3>
+                <p class="article-excerpt mb-4">
+                  أساسيات إطار العمل Bootstrap 5 وكيفية إنشاء layouts متجاوبة
+                  بسرعة.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-03</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="frontend"
+              data-title="JavaScript ES6+ الميزات الجديدة"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >فرونت إند</span
+                >
+                <img
+                  src="../public/pictures/img-4.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">
+                  JavaScript ES6+: الميزات الجديدة
+                </h3>
+                <p class="article-excerpt mb-4">
+                  استكشف الميزات الأحدث في JavaScript مثل Arrow Functions و
+                  Destructuring.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-04</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="frontend"
+              data-title="React.js للمبتدئين"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >فرونت إند</span
+                >
+                <img
+                  src="../public/pictures/img-5.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">
+                  React.js للمبتدئين: دليل شامل
+                </h3>
+                <p class="article-excerpt mb-4">
+                  تعلم أساسيات React.js وكيفية بناء تطبيقات باستخدام Components
+                  وال Hooks.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-05</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="frontend"
+              data-title="Tailwind CSS"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >فرونت إند</span
+                >
+                <img
+                  src="../public/pictures/img-6.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">
+                  Tailwind CSS: تصميم سريع وفعال
+                </h3>
+                <p class="article-excerpt mb-4">
+                  تعلم كيفية استخدام Tailwind CSS لتصميم واجهات احترافية بدون
+                  كتابة CSS.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-06</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="frontend"
+              data-title="Responsive Design"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >فرونت إند</span
+                >
+                <img
+                  src="../public/pictures/img-7.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">
+                  Responsive Design: أفضل الممارسات
+                </h3>
+                <p class="article-excerpt mb-4">
+                  كيفية إنشاء مواقع ويب متجاوبة تعمل على جميع الأجهزة والشاشات.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-07</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 8 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="frontend"
+              data-title="TypeScript أساسيات"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >فرونت إند</span
+                >
+                <img
+                  src="../public/pictures/img-8.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">
+                  TypeScript: أساسيات الت typing
+                </h3>
+                <p class="article-excerpt mb-4">
+                  تعلم أساسيات TypeScript وكيفية إضافة typing لـ JavaScript
+                  لتحسين الأمان.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-08</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 9 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="frontend"
+              data-title="Next.js 14"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >فرونت إند</span
+                >
+                <img
+                  src="../public/pictures/img-9.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">Next.js 14: جديد الإصدار</h3>
+                <p class="article-excerpt mb-4">
+                  استكشاف الميزات الجديدة في Next.js 14 مثل Server Components و
+                  React Server Actions.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-09</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 10 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="frontend"
+              data-title="Vue.js دليل المبتدئين"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >فرونت إند</span
+                >
+                <img
+                  src="../public/pictures/img-10.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">Vue.js: دليل المبتدئين</h3>
+                <p class="article-excerpt mb-4">
+                  تعلم أساسيات Vue.js وكيفية بناء تطبيقات تفاعلية بسرعة.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-10</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 11 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="backend"
+              data-title="PHP 8.4 الجديد"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >باك إند</span
+                >
+                <img
+                  src="../public/pictures/img-11.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">PHP 8.4: الميزات الجديدة</h3>
+                <p class="article-excerpt mb-4">
+                  استكشف أحدث الميزات في PHP 8.4 وكيفية تحسين أداء تطبيقاتك بشكل
+                  كبير.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-11</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 12 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="backend"
+              data-title="Laravel 11"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >باك إند</span
+                >
+                <img
+                  src="../public/pictures/img-12.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">
+                  Laravel 11: دليل المطور الشامل
+                </h3>
+                <p class="article-excerpt mb-4">
+                  تعلم أساسيات Laravel 11 وكيفية بناء تطبيقات الويب باحترافية
+                  وسرعة.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-12</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 13 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="backend"
+              data-title="MySQL Performance"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >باك إند</span
+                >
+                <img
+                  src="../public/pictures/img-13.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">MySQL: التحسين وتحسين الأداء</h3>
+                <p class="article-excerpt mb-4">
+                  نصائح وحيل لتحسين استعلامات MySQL وتسريع قاعدة البيانات بنسبة
+                  10x.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-13</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 14 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="backend"
+              data-title="REST API Design"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >باك إند</span
+                >
+                <img
+                  src="../public/pictures/img-14.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">تصميم API RESTful احترافي</h3>
+                <p class="article-excerpt mb-4">
+                  مبادئ تصميم RESTful APIs وكيفية تنفيذها بأفضل الممارسات
+                  والأمان.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-14</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 15 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="backend"
+              data-title="Node.js"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >باك إند</span
+                >
+                <img
+                  src="../public/pictures/img-15.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">
+                  Node.js للمبتدئين: JavaScript على الخادم
+                </h3>
+                <p class="article-excerpt mb-4">
+                  تعلم أساسيات Node.js وكيفية بناء خوادم ويب باستخدام
+                  JavaScript.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-15</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 16 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="backend"
+              data-title="JWT Authentication"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >باك إند</span
+                >
+                <img
+                  src="../public/pictures/img-16.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">المصادقة باستخدام JWT</h3>
+                <p class="article-excerpt mb-4">
+                  تعلم كيفية تنفيذ نظام مصادقة آمن باستخدام JSON Web Tokens.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-16</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 17 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="backend"
+              data-title="WebSockets"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >باك إند</span
+                >
+                <img
+                  src="../public/pictures/img-17.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">WebSockets: الاتصال الفوري</h3>
+                <p class="article-excerpt mb-4">
+                  بناء تطبيقات التواصل الفوري باستخدام تقنية WebSockets.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-17</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 18 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="backend"
+              data-title="Redis Caching"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >باك إند</span
+                >
+                <img
+                  src="../public/pictures/img-18.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">
+                  Redis: تحسين الأداء بالتخزين المؤقت
+                </h3>
+                <p class="article-excerpt mb-4">
+                  كيفية استخدام Redis لتسريع تطبيقات الويب وتحسين وقت الاستجابة.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-18</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 19 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="backend"
+              data-title="Docker containers"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >باك إند</span
+                >
+                <img
+                  src="../public/pictures/img-19.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">Docker: حاويات التطبيقات</h3>
+                <p class="article-excerpt mb-4">
+                  مقدمة في Docker وكيفية حزم تطبيقاتك بشكل موحد وقابل للنقل.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-19</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 20 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="backend"
+              data-title="GraphQL"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >باك إند</span
+                >
+                <img
+                  src="../public/pictures/img-20.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">GraphQL: بديل REST APIs</h3>
+                <p class="article-excerpt mb-4">
+                  مقارنة بين GraphQL و REST ومتى تستخدم كل منهما في مشاريعك.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-20</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 21 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="mobile"
+              data-title="Flutter"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >موبايل</span
+                >
+                <img
+                  src="../public/pictures/img-21.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">Flutter: بناء تطبيقات موبايل</h3>
+                <p class="article-excerpt mb-4">
+                  تعلم أساسيات Flutter وكيفية بناء تطبيقات iOS و Android من كود
+                  واحد.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-21</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 22 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="mobile"
+              data-title="React Native"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >موبايل</span
+                >
+                <img
+                  src="../public/pictures/img-22.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">
+                  React Native: تطبيقات متعددة المنصات
+                </h3>
+                <p class="article-excerpt mb-4">
+                  بناء تطبيقات موبايل باستخدام React Native و JavaScript مع أداء
+                  عالي.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-22</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 23 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="mobile"
+              data-title="Kotlin Android"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >موبايل</span
+                >
+                <img
+                  src="../public/pictures/img-23.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">
+                  Kotlin: البرمجة لتطبيقات Android
+                </h3>
+                <p class="article-excerpt mb-4">
+                  تعلم لغة Kotlin كالبديل الأمثل للجافا في تطوير تطبيقات
+                  أندرويد.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-23</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 24 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="mobile"
+              data-title="SwiftUI"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >موبايل</span
+                >
+                <img
+                  src="../public/pictures/img-24.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">SwiftUI: تصميم واجهات iOS</h3>
+                <p class="article-excerpt mb-4">
+                  بناء واجهات مستخدم جميلة لتطبيقات iOS باستخدام SwiftUI الجديد.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-24</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 25 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="mobile"
+              data-title="Ionic Framework"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >موبايل</span
+                >
+                <img
+                  src="../public/pictures/img-25.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">
+                  Ionic Framework: تطبيقات موبايل متقنة
+                </h3>
+                <p class="article-excerpt mb-4">
+                  بناء تطبيقات موبايل عابرة المنصات باستخدام Ionic و Angular أو
+                  React.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-25</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 26 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="devops"
+              data-title="DevOps Fundamentals"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >DevOps</span
+                >
+                <img
+                  src="../public/pictures/img-26.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">DevOps: أساسيات الممارسات</h3>
+                <p class="article-excerpt mb-4">
+                  مقدمة في DevOps وفلسفة التطوير والعمليات المتكاملة.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-26</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 27 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="devops"
+              data-title="CI/CD Pipelines"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >DevOps</span
+                >
+                <img
+                  src="../public/pictures/img-27.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">
+                  CI/CD: أنابيب التكامل المستمر
+                </h3>
+                <p class="article-excerpt mb-4">
+                  بناء أنابيب CI/CD لتحسين عملية التطوير والنشر تلقائياً.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-27</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 28 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="devops"
+              data-title="Kubernetes"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >DevOps</span
+                >
+                <img
+                  src="../public/pictures/img-28.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">Kubernetes: إدارة الحاويات</h3>
+                <p class="article-excerpt mb-4">
+                  مفاهيم أساسية في Kubernetes وكيفية إدارة الخوادم الموزعة.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-28</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 29 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="devops"
+              data-title="AWS Services"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >DevOps</span
+                >
+                <img
+                  src="../public/pictures/img-29.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">AWS: الخدمات السحابية</h3>
+                <p class="article-excerpt mb-4">
+                  استكشاف الخدمات الأساسية في Amazon Web Services للمطورين.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-29</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 30 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="devops"
+              data-title="Terraform"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >DevOps</span
+                >
+                <img
+                  src="../public/pictures/img-30.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">Terraform: البنية ككود</h3>
+                <p class="article-excerpt mb-4">
+                  إدارة البنية التحتية السحابية باستخدام Terraform و
+                  Infrastructure as Code.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-06-30</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 31 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="ai"
+              data-title="Machine Learning Basics"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >ذكاء اصطناعي</span
+                >
+                <img
+                  src="../public/pictures/img-31.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">التعلم الآلي: أساسيات</h3>
+                <p class="article-excerpt mb-4">
+                  مقدمة في مفاهيم الذكاء الاصطناعي وكيفية بناء نماذج تعلم آلي.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-07-01</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 32 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="ai"
+              data-title="Deep Learning"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >ذكاء اصطناعي</span
+                >
+                <img
+                  src="../public/pictures/img-32.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">
+                  Deep Learning: الشبكات العصبية
+                </h3>
+                <p class="article-excerpt mb-4">
+                  تعلم الشبكات العصبية العميقة وتطبيقاتها في التعرف على الصور
+                  والنصوص.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-07-02</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 33 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="ai"
+              data-title="NLP"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >ذكاء اصطناعي</span
+                >
+                <img
+                  src="../public/pictures/img-33.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">NLP: اللغة الطبيعية</h3>
+                <p class="article-excerpt mb-4">
+                  معالجة اللغة الطبيعية باستخدام الذكاء الاصطناعي وتطبيقات
+                  الChatbots.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-07-03</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 34 -->
+            <div
+              class="col-md-6 col-lg-4 article-item"
+              data-category="ai"
+              data-title="AI Ethics"
+            >
+              <div class="card article-card h-100 p-4 hover-lift">
+                <span
+                  class="category-badge position-absolute bg-white border-color-warning top-0 end-0 m-5 badge px-3 py-2 rounded-pill fs-6 opacity-90"
+                  >ذكاء اصطناعي</span
+                >
+                <img
+                  src="../public/pictures/img-34.jpg"
+                  class="article-image"
+                  alt="مقالة تقنية"
+                />
+                <h3 class="article-title mb-3">أخلاقيات الذكاء الاصطناعي</h3>
+                <p class="article-excerpt mb-4">
+                  مناقشة القضايا الأخلاقية في تطوير الذكاء الاصطناعي وتأثيره على
+                  المجتمع.
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center mt-auto"
+                >
+                  <span class="article-date"
+                    ><i class="far fa-calendar-alt me-1"></i> 2026-07-05</span
+                  >
+                  <button class="btn btn-read-more" onclick="readMore(this)">
+                    اقرأ المزيد <i class="fas fa-arrow-left me-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container text-center">
+        <p class="mb-0">&copy; 2026 جميع الحقوق محفوظة للمدون التقني.</p>
       </div>
     </footer>
+
+    <!-- Load Bootstrap JS first so the navbar and collapse features work properly. -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../public/shared.js"></script>
     <script>
-      // Calculator state and helpers are kept inside this page so the logic stays close to the layout.
-      const calculator = {
-        displayValue: "0",
-        firstOperand: null,
-        waitingForSecondOperand: false,
-        operator: null,
-      };
-
-      let historyArray = JSON.parse(localStorage.getItem("calcHistory")) || [];
-
-      // Handle a digit button press and update the display value accordingly.
-      function inputDigit(digit) {
-        if (calculator.waitingForSecondOperand) {
-          calculator.displayValue = digit;
-          calculator.waitingForSecondOperand = false;
-          return;
-        }
-
-        calculator.displayValue =
-          calculator.displayValue === "0"
-            ? digit
-            : calculator.displayValue + digit;
-      }
-
-      // Add a decimal point to the current number, but avoid duplicates.
-      function inputDecimal(dot) {
-        if (calculator.waitingForSecondOperand) {
-          calculator.displayValue = "0" + dot;
-          calculator.waitingForSecondOperand = false;
-          return;
-        }
-
-        if (!calculator.displayValue.includes(dot)) {
-          calculator.displayValue += dot;
-        }
-      }
-
-      function handleOperator(nextOperator) {
-        const { firstOperand, displayValue, operator } = calculator;
-        const inputValue = parseFloat(displayValue);
-
-        if (operator && calculator.waitingForSecondOperand) {
-          calculator.operator = nextOperator;
-          return;
-        }
-
-        if (firstOperand == null) {
-          calculator.firstOperand = inputValue;
-        } else if (operator) {
-          const result = performCalculation[operator](firstOperand, inputValue);
-          saveToHistory(firstOperand, operator, inputValue, result);
-          calculator.displayValue = String(result);
-          calculator.firstOperand = result;
-        }
-
-        calculator.waitingForSecondOperand = true;
-        calculator.operator = nextOperator;
-      }
-
-      const performCalculation = {
-        "/": (firstOperand, secondOperand) => firstOperand / secondOperand,
-        "*": (firstOperand, secondOperand) => firstOperand * secondOperand,
-        "+": (firstOperand, secondOperand) => firstOperand + secondOperand,
-        "-": (firstOperand, secondOperand) => firstOperand - secondOperand,
-        "=": (_firstOperand, secondOperand) => secondOperand,
-      };
-
-      function resetCalculator() {
-        calculator.displayValue = "0";
-        calculator.firstOperand = null;
-        calculator.waitingForSecondOperand = false;
-        calculator.operator = null;
-      }
-
-      function updateDisplay() {
-        document.querySelectorAll(".calculator-screen").forEach((display) => {
-          display.value = calculator.displayValue;
+      // Search and filter helpers for the blog page. These are intentionally simple and easy to follow.
+      function filterArticles() {
+        const query = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        const items = document.querySelectorAll(".article-item");
+        items.forEach((item) => {
+          const title = item.getAttribute("data-title").toLowerCase();
+          if (title.includes(query)) {
+            item.classList.remove("hidden-article");
+          } else {
+            item.classList.add("hidden-article");
+          }
         });
       }
 
-      // Keep a small history of operations for the user so they can review recent calculations.
-      function saveToHistory(first, op, second, res) {
-        if (op === "=") return;
-
-        historyArray.push(`${first} ${op} ${second} = ${res}`);
-        localStorage.setItem("calcHistory", JSON.stringify(historyArray));
-        updateHistoryUI();
-      }
-
-      function updateHistoryUI() {
-        const historyList = document.getElementById("historyList");
-        if (!historyList) return;
-
-        historyList.innerHTML = "";
-        [...historyArray].reverse().forEach((item) => {
-          const li = document.createElement("li");
-          li.className =
-            "list-group-item bg-dark text-light border-secondary font-monospace fs-6";
-          li.textContent = item;
-          historyList.appendChild(li);
+      function filterCategory(category, btn) {
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const items = document.querySelectorAll(".article-item");
+        items.forEach((item) => {
+          if (
+            category === "all" ||
+            item.getAttribute("data-category") === category
+          ) {
+            item.classList.remove("hidden-article");
+          } else {
+            item.classList.add("hidden-article");
+          }
         });
       }
 
-      function clearHistory() {
-        historyArray = [];
-        localStorage.removeItem("calcHistory");
-        updateHistoryUI();
+      function readMore(btn) {
+        alert("سيتم نقلك لقراءة المقال بالكامل قريباً!");
       }
-
-      document.addEventListener("DOMContentLoaded", () => {
-        updateDisplay();
-        updateHistoryUI();
-
-        const keys = document.querySelector(".calculator-keys");
-        if (!keys) return;
-
-        keys.addEventListener("click", (event) => {
-          const target = event.target;
-          if (!target.matches("button")) return;
-
-          if (target.classList.contains("operator")) {
-            handleOperator(target.value);
-            updateDisplay();
-            return;
-          }
-
-          if (target.classList.contains("decimal")) {
-            inputDecimal(target.value);
-            updateDisplay();
-            return;
-          }
-
-          if (target.classList.contains("all-clear")) {
-            resetCalculator();
-            updateDisplay();
-            return;
-          }
-
-          inputDigit(target.value);
-          updateDisplay();
-        });
-
-        const clearHistoryBtn = document.getElementById("clearHistoryBtn");
-        if (clearHistoryBtn) {
-          clearHistoryBtn.addEventListener("click", clearHistory);
-        }
-      });
     </script>
   </body>
 </html>
