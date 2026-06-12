@@ -79,14 +79,6 @@
           color 0.3s ease;
       }
 
-      /* تنسيقات مخصصة مرنة للوضع الثنائي */
-      #mainNavbar,
-      .navbar-custom {
-        background-color: var(--navbar-bg) !important;
-        border-bottom: 1px solid rgba(30, 41, 59, 0.5);
-        transition: background-color 0.3s ease;
-      }
-
       .custom-link {
         color: rgba(248, 250, 252, 0.86);
         transition: color 0.2s ease;
@@ -164,7 +156,7 @@
 
   <body class="d-flex flex-column min-vh-100">
     <!-- This page is built as a standalone calculator experience, while still matching the main site theme and navigation. -->
-     <header class="sticky-top">
+    <header>
       <nav
         class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm py-3"
         id="mainNavbar"
@@ -174,7 +166,7 @@
             class="navbar-brand fw-bold fs-4 text-gradient"
             href="../index.html"
           >
-            الآلة الحاسبة</a
+            مدونة حسوب</a
           >
           <button
             class="navbar-toggler border-0"
@@ -218,7 +210,7 @@
 
             <button
               id="theme-toggle"
-              class="btn btn-theme-toggle ms-lg-4 d-flex align-items-center gap-2 py-2 px-3 border-dark "
+              class="btn btn-theme-toggle ms-lg-4 d-flex align-items-center gap-2 py-2 px-3"
             >
               <span id="toggle-icon">🌙</span>
             </button>
