@@ -109,6 +109,10 @@
         color: #0d6efd !important;
       }
 
+      body:not(.dark-theme) .navbar-toggler-icon {
+        filter: invert(1);
+      }
+
       body.light-theme .custom-card {
         background: rgba(255, 255, 255, 0.85) !important;
         backdrop-filter: blur(12px);
@@ -206,7 +210,6 @@
   </head>
 
   <body class="dark-theme">
-    <!-- Contact page layout with a matching theme and simple form validation. -->
     <header class="sticky-top">
       <nav
         class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm py-3"
